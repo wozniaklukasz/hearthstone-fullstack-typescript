@@ -1,6 +1,6 @@
-import {mapDaoListToDtoList, mapDaoToDto} from "./decks.mapper";
 import {CreateDeckDto, GetDeckDto} from "./types";
 import {IDecksDao} from "./interfaces";
+import {mapDaoListToDtoList, mapDaoToDto} from "./utils";
 
 class DecksDaoFactory implements IDecksDao{
     private deckModel;

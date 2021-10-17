@@ -1,5 +1,5 @@
-import {DeckDao, GetDeckDto} from "src/decks/types";
-import {mapDaoListToDtoList, mapDaoToDto} from "src/decks/decks.mapper";
+import {DeckDao, GetDeckDto} from "src/modules/decks/types";
+import {mapDaoListToDtoList, mapDaoToDto} from "src/modules/decks/utils";
 
 describe('Deck mapper works', () => {
     it('DAO is mapped to DTO', () => {

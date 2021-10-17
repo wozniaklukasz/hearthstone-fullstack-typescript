@@ -1,6 +1,6 @@
 # hearthstone-ts
 
-[![Server CI](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/server.yml/badge.svg)](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/server.yml)
+[![server](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/server.yml/badge.svg)](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/server.yml)
 
 ## Client
 

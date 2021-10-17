@@ -1,4 +1,4 @@
-import {GetDeckDto} from "./types";
+import {GetDeckDto} from "../types";
 
 const mapDaoToDto = (dao: any): GetDeckDto => {
     return {
