@@ -5,7 +5,8 @@
   "main": "./src/app.ts",
   "scripts": {
     "start": "ts-node-dev --respawn ./src/app.ts",
-    "test": "jest ./test"
+    "test": "jest ./test",
+    "lint": "eslint src/**/*.ts && prettier --check src/**/*.ts"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +25,11 @@
     "@types/jest": "^27.0.2",
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
     "jest": "^27.2.5",
+    "prettier": "2.4.1",
     "ts-jest": "^27.0.7",
     "ts-node-dev": "^1.1.8",
     "tslint": "^6.1.3",

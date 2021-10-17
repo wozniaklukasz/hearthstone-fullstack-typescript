@@ -9,6 +9,8 @@ const options = {
     useUnifiedTopology: true,
 };
 
+/* eslint-disable */
+
 const initDbConnection = () => {
     console.log(`Connecting to db ${process.env.DB_NAME}...`);
     // @ts-ignore
