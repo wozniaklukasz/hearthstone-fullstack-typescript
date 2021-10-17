@@ -2,7 +2,7 @@ interface DeckDto {
   title: string;
 }
 
-export type CreateDeckDto = DeckDto & Record<string, never>;
+export type CreateDeckDto = DeckDto & Record<string, unknown>;
 
 export type GetDeckDto = DeckDto & {
   id: string;
