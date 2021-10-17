@@ -5,7 +5,11 @@
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "src": ["src"]
+    }
   },
   "exclude": [
     "node_modules"

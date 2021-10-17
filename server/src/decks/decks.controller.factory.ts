@@ -1,5 +1,5 @@
-import {ICreateDeckDto, IGetDeckDto} from "./decks.dto";
-import IDecksDao from "./IDecksDao";
+import {CreateDeckDto, GetDeckDto} from "./types";
+import {IDecksDao} from "./interfaces";
 
 class DecksControllerFactory {
     private decksDao: IDecksDao;
@@ -8,15 +8,15 @@ class DecksControllerFactory {
         this.decksDao = decksDao;
     }
 
-    async getDecks(): Promise<IGetDeckDto[]> {
+    async getDecks(): Promise<GetDeckDto[]> {
         return this.decksDao.getDecks();
     }
 
-    async getDeckById(deckId: string): Promise<IGetDeckDto> {
+    async getDeckById(deckId: string): Promise<GetDeckDto> {
         return this.decksDao.getDeckById(deckId);
     }
 
-    async createDeck(deckDto: ICreateDeckDto): Promise<IGetDeckDto> {
+    async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
         return this.decksDao.createDeck(deckDto);
     }
 }

@@ -1,6 +1,6 @@
-import {ICreateDeckDto, IGetDeckDto} from "./decks.dto";
 import {mapDaoListToDtoList, mapDaoToDto} from "./decks.mapper";
-import IDecksDao from "./IDecksDao";
+import {CreateDeckDto, GetDeckDto} from "./types";
+import {IDecksDao} from "./interfaces";
 
 class DecksDaoFactory implements IDecksDao{
     private deckModel;
@@ -9,7 +9,7 @@ class DecksDaoFactory implements IDecksDao{
         this.deckModel = deckModel;
     }
 
-    async getDecks(): Promise<IGetDeckDto[]> {
+    async getDecks(): Promise<GetDeckDto[]> {
         try {
             const decks = await this.deckModel.find({});
             return mapDaoListToDtoList(decks)
@@ -18,7 +18,7 @@ class DecksDaoFactory implements IDecksDao{
         }
     }
 
-    async getDeckById(deckId: string): Promise<IGetDeckDto> {
+    async getDeckById(deckId: string): Promise<GetDeckDto> {
         try {
             const deck = await this.deckModel.findOne({_id: deckId});
             return mapDaoToDto(deck)
@@ -27,7 +27,7 @@ class DecksDaoFactory implements IDecksDao{
         }
     }
 
-    async createDeck(deckDto: ICreateDeckDto): Promise<IGetDeckDto> {
+    async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
         try {
             const deck = await this.deckModel.create(deckDto);
             return mapDaoToDto(deck);

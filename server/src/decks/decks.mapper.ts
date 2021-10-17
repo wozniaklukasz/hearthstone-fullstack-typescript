@@ -1,6 +1,6 @@
-import {IGetDeckDto} from "./decks.dto";
+import {GetDeckDto} from "./types";
 
-const mapDaoToDto = (dao: any): IGetDeckDto => {
+const mapDaoToDto = (dao: any): GetDeckDto => {
     return {
         id: dao._id,
         title: dao.title,
@@ -9,7 +9,7 @@ const mapDaoToDto = (dao: any): IGetDeckDto => {
     }
 }
 
-const mapDaoListToDtoList = (daoList: any): IGetDeckDto[] => {
+const mapDaoListToDtoList = (daoList: any): GetDeckDto[] => {
     return daoList.map((dao: any) => mapDaoToDto(dao))
 }
 
