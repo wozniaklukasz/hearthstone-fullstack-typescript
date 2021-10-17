@@ -1,1 +1,1 @@
-export {mapDaoListToDtoList, mapDaoToDto} from "./mapper";
+export { mapDaoListToDtoList, mapDaoToDto } from './mapper';

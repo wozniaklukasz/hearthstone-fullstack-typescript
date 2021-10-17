@@ -1,1 +1,1 @@
-export {default as DeckModel} from './deck';
+export { default as DeckModel } from './deck';

@@ -1,11 +1,11 @@
 interface DeckDto {
-    title: string;
+  title: string;
 }
 
-export type CreateDeckDto = DeckDto & {}
+export type CreateDeckDto = DeckDto & {};
 
 export type GetDeckDto = DeckDto & {
-    id: string;
-    createdAt: string;
-    updatedAt: string;
-}
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+};

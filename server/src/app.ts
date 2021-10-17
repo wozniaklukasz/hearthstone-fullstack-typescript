@@ -5,9 +5,9 @@ import express from 'express';
 import * as http from 'http';
 import cors from 'cors';
 
-import initDbConnection from "./db";
+import initDbConnection from './db';
 import logger from './helpers/logger';
-import initRoutes from "./routes";
+import initRoutes from './routes';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
@@ -22,5 +22,5 @@ app.use(logger);
 initRoutes(app);
 
 server.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });

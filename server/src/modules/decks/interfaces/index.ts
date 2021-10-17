@@ -1,1 +1,1 @@
-export {default as IDecksDao} from './IDecksDao'
+export { default as IDecksDao } from './IDecksDao';
