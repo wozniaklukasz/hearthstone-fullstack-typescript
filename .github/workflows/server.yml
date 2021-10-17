@@ -19,5 +19,7 @@ jobs:
           node-version: "14.x"
       - name: Installing packages
         run: npm ci
+      - name: Eslint and prettier check
+        run: npm run lint
       - name: Unit testing
         run: npm test

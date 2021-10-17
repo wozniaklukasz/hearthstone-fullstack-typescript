@@ -10,30 +10,18 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async getDecks(): Promise<GetDeckDto[]> {
-    try {
-      const decks = await this.deckModel.find({});
-      return mapDaoListToDtoList(decks);
-    } catch (e) {
-      throw e;
-    }
+    const decks = await this.deckModel.find({});
+    return mapDaoListToDtoList(decks);
   }
 
   async getDeckById(deckId: string): Promise<GetDeckDto> {
-    try {
-      const deck = await this.deckModel.findOne({ _id: deckId });
-      return mapDaoToDto(deck);
-    } catch (e) {
-      throw e;
-    }
+    const deck = await this.deckModel.findOne({ _id: deckId });
+    return mapDaoToDto(deck);
   }
 
   async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
-    try {
-      const deck = await this.deckModel.create(deckDto);
-      return mapDaoToDto(deck);
-    } catch (e) {
-      throw e;
-    }
+    const deck = await this.deckModel.create(deckDto);
+    return mapDaoToDto(deck);
   }
 }
 

@@ -11,7 +11,7 @@ import initRoutes from './routes';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port: Number = 3000;
+const port = 3000;
 
 initDbConnection();
 
