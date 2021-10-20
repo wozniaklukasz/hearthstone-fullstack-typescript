@@ -1,14 +1,14 @@
 import { Schema, model, Model, Document } from 'mongoose';
 
-interface IDeck extends Document {
+type TDeckDocument = Partial<Document> & {
   title: string;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-type IDeckModel = Model<IDeck>;
+interface IDeckModel extends Model<TDeckDocument> {}
 
-const schema = new Schema<IDeck>(
+const schema = new Schema<TDeckDocument>(
   {
     title: {
       type: String,
@@ -22,4 +22,4 @@ const schema = new Schema<IDeck>(
 
 const DeckModel: IDeckModel = model('Deck', schema);
 
-export { DeckModel, IDeckModel };
+export { DeckModel, IDeckModel, TDeckDocument };

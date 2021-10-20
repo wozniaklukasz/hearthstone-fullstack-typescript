@@ -1,6 +1,6 @@
-interface DeckDto {
+type DeckDto = {
   title: string;
-}
+};
 
 export type CreateDeckDto = DeckDto & Record<string, unknown>;
 

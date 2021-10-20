@@ -1,9 +1,10 @@
-import { DeckDao, GetDeckDto } from 'src/modules/decks/types';
+import { GetDeckDto } from 'src/modules/decks/types';
 import { mapDaoListToDtoList, mapDaoToDto } from 'src/modules/decks/utils';
+import { TDeckDocument } from 'src/model';
 
 describe('Deck mapper works', () => {
   it('DAO is mapped to DTO', () => {
-    const deckDao: DeckDao = {
+    const deckDao: TDeckDocument = {
       _id: 'id',
       title: 'title',
       updatedAt: '11/02',
@@ -15,14 +16,13 @@ describe('Deck mapper works', () => {
       updatedAt: '11/02',
       createdAt: '22/02',
     };
-
     const deckDto = mapDaoToDto(deckDao);
 
     expect(deckDto).toStrictEqual(expectedDeckDto);
   });
 
   it('DAO array is mapped to DTO', () => {
-    const decksDao: DeckDao[] = [
+    const decksDao: TDeckDocument[] = [
       {
         _id: 'id',
         title: 'title',
@@ -50,7 +50,6 @@ describe('Deck mapper works', () => {
         createdAt: '22/02',
       },
     ];
-
     const decksDto = mapDaoListToDtoList(decksDao);
 
     expect(decksDto).toStrictEqual(expectedDecksDto);

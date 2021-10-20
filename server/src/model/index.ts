@@ -1,1 +1,1 @@
-export { DeckModel, IDeckModel } from './deck';
+export { DeckModel, IDeckModel, TDeckDocument } from './deck';

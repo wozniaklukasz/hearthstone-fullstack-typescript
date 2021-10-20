@@ -1,23 +1,21 @@
-import DecksDaoFactory from '../../src/modules/decks/decks.dao.factory';
-import { DeckDao, GetDeckDto } from '../../src/modules/decks/types';
-import { IDeckModel } from '../../src/model';
-import { errorCodes } from '../../src/const';
+import DecksDaoFactory from 'src/modules/decks/decks.dao.factory';
+import { GetDeckDto } from 'src/modules/decks/types';
+import { IDeckModel, TDeckDocument } from 'src/model';
+import { errorCodes } from 'src/const';
 
 describe('Deck DAO', () => {
-  const deckDao: DeckDao = {
+  const deckDao: TDeckDocument = {
     _id: 'id',
     title: 'title',
     createdAt: '11',
     updatedAt: '12',
   };
-
   const expectedDeckDto: GetDeckDto = {
     id: 'id',
     title: 'title',
     createdAt: '11',
     updatedAt: '12',
   };
-
   const deckModelMock = {
     find: () => {
       return Promise.resolve([deckDao]);
@@ -29,7 +27,6 @@ describe('Deck DAO', () => {
       return Promise.resolve(deckDao);
     },
   } as unknown as IDeckModel;
-
   const decksDao = new DecksDaoFactory(deckModelMock);
 
   it('getDecks return list of decks', (done) => {
@@ -59,9 +56,8 @@ describe('Deck DAO throw errors', () => {
     findOne: () => {
       return Promise.resolve(null);
     },
-  };
-
-  const decksDao = new DecksDaoFactory(deckModelMock as unknown as IDeckModel);
+  } as unknown as IDeckModel;
+  const decksDao = new DecksDaoFactory(deckModelMock);
 
   it('getDeck throws an error if deck will be null', () => {
     const expectedError = new Error(errorCodes.DECK_NOT_FOUND);
