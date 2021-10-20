@@ -1,7 +1,14 @@
-import * as mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+import { Schema, model, Model, Document } from 'mongoose';
 
-const deckSchema = new Schema(
+interface IDeck extends Document {
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+type IDeckModel = Model<IDeck>;
+
+const schema = new Schema<IDeck>(
   {
     title: {
       type: String,
@@ -13,4 +20,6 @@ const deckSchema = new Schema(
   },
 );
 
-export default mongoose.model('Deck', deckSchema);
+const DeckModel: IDeckModel = model('Deck', schema);
+
+export { DeckModel, IDeckModel };

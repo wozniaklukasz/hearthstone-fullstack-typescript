@@ -1,11 +1,13 @@
 import { CreateDeckDto, GetDeckDto } from './types';
 import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
+import { IDeckModel } from '../../model';
+import { errorCodes } from '../../const';
 
 class DecksDaoFactory implements IDecksDao {
-  private deckModel;
+  private deckModel: IDeckModel;
 
-  constructor(deckModel: any) {
+  constructor(deckModel: IDeckModel) {
     this.deckModel = deckModel;
   }
 
@@ -16,7 +18,12 @@ class DecksDaoFactory implements IDecksDao {
 
   async getDeckById(deckId: string): Promise<GetDeckDto> {
     const deck = await this.deckModel.findOne({ _id: deckId });
-    return mapDaoToDto(deck);
+
+    if (deck) {
+      return mapDaoToDto(deck);
+    } else {
+      throw new Error(errorCodes.DECK_NOT_FOUND);
+    }
   }
 
   async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
