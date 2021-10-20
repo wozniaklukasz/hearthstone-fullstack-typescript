@@ -3,15 +3,14 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
-  preset: "ts-jest",
-  testEnvironment: "node",
+// eslint-disable-next-line no-undef
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   transform: {
-    "node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
+    'node_modules/variables/.+\\.(j|t)sx?$': 'ts-jest',
   },
-  transformIgnorePatterns: [
-    "node_modules/(?!variables/.*)"
-  ],
+  transformIgnorePatterns: ['node_modules/(?!variables/.*)'],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -31,7 +30,7 @@ export default {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -39,7 +38,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -74,10 +73,7 @@ export default {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: [
-    "<rootDir>",
-    "node_modules",
-  ],
+  moduleDirectories: ['<rootDir>', 'node_modules'],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
