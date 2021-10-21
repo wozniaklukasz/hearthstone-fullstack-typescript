@@ -1,11 +1,11 @@
-import express from 'express';
+import { Application, Request, Response, NextFunction } from 'express';
 import { CommonRoutes } from '../common/common.routes';
 import DecksController from './decks.controller';
 
 export class DecksRoutes extends CommonRoutes {
   decksController;
 
-  constructor(app: express.Application) {
+  constructor(app: Application) {
     super(app);
     this.decksController = DecksController();
   }
@@ -13,7 +13,7 @@ export class DecksRoutes extends CommonRoutes {
   configureRoutes() {
     this.app
       .route(`/api/decks`)
-      .get((req: express.Request, res: express.Response) => {
+      .get((req: Request, res: Response) => {
         this.decksController
           .getDecks()
           .then((resp) => {
@@ -23,7 +23,7 @@ export class DecksRoutes extends CommonRoutes {
             res.status(500).send(err);
           });
       })
-      .post((req: express.Request, res: express.Response) => {
+      .post((req: Request, res: Response) => {
         this.decksController
           .createDeck({ title: req.body.title })
           .then((resp) => {
@@ -36,26 +36,26 @@ export class DecksRoutes extends CommonRoutes {
 
     this.app
       .route(`/api/decks/:deckId`)
-      .all((req: express.Request, res: express.Response, next: express.NextFunction) => {
+      .all((err: Error, req: Request, res: Response, next: NextFunction) => {
         next();
       })
-      .get((req: express.Request, res: express.Response) => {
+      .get((req: Request, res: Response, next: NextFunction) => {
         this.decksController
           .getDeckById(req.params.deckId)
           .then((resp) => {
             res.status(200).send(resp);
           })
-          .catch((err) => {
-            res.status(500).send(err);
+          .catch((error) => {
+            next(error);
           });
       })
-      .put((req: express.Request, res: express.Response) => {
+      .put((req: Request, res: Response) => {
         res.status(200).send(`PUT requested for id ${req.params.deckId}`);
       })
-      .patch((req: express.Request, res: express.Response) => {
+      .patch((req: Request, res: Response) => {
         res.status(200).send(`PATCH requested for id ${req.params.deckId}`);
       })
-      .delete((req: express.Request, res: express.Response) => {
+      .delete((req: Request, res: Response) => {
         res.status(200).send(`DELETE requested for id ${req.params.deckId}`);
       });
   }
