@@ -1,10 +1,10 @@
+import { DeleteResult, UpdateResult } from 'mongodb';
 import { CreateDeckDto, GetDeckDto } from './types';
 import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 import { IDeckModel, TDeckDocument } from '../../model';
 import { errorCodes } from '../../const';
 import DaoValidationService from '../common/daoValidationService';
-import { DeleteResult } from 'mongodb';
 
 class DecksDaoFactory implements IDecksDao {
   private deckModel: IDeckModel;
@@ -33,6 +33,18 @@ class DecksDaoFactory implements IDecksDao {
   async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
     const deck: TDeckDocument = await this.deckModel.create(deckDto);
     return mapDaoToDto(deck);
+  }
+
+  async updateDeck(deckId: string, deckDto: CreateDeckDto): Promise<GetDeckDto> {
+    DaoValidationService.validateId(deckId);
+
+    const updateResult: UpdateResult = await this.deckModel.updateOne({ _id: deckId }, deckDto);
+
+    if (updateResult && updateResult.modifiedCount > 0) {
+      return await this.getDeckById(deckId);
+    }
+
+    throw new Error(errorCodes.DECK_NOT_FOUND);
   }
 
   async deleteDeck(deckId: string): Promise<string> {

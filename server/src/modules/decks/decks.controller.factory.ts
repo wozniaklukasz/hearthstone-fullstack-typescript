@@ -20,6 +20,10 @@ class DecksControllerFactory implements IDecksController {
     return this.decksDao.createDeck(deckDto);
   }
 
+  async updateDeck(deckId: string, deckDto: CreateDeckDto): Promise<GetDeckDto> {
+    return this.decksDao.updateDeck(deckId, deckDto);
+  }
+
   async deleteDeck(deckId: string): Promise<string> {
     return this.decksDao.deleteDeck(deckId);
   }

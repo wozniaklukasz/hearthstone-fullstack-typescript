@@ -4,14 +4,20 @@
 
 ## Client
 
-Bootstrapped from [NextJS TypeScript](https://nextjs.org/learn/excel/typescript).
+- [x] React
+- [x] NextJS
+- [ ] chakra-ui
 
 ## Server
 
-Bootstrapped from [makinhs/toptal-rest-series](https://github.com/makinhs/toptal-rest-series).
+- [x] NodeJS
+- [x] Express
+- [x] Unit testing with Jest
+- [x] Mongoose
+- [ ] Schema validation with Yup
 
-## Docker
+## CI/CD
 
-### Mongo DB
-
-Here: [mongo and mongo-express](https://hub.docker.com/_/mongo).
+- [x] GitHub Actions
+  - [x] Eslint & Prettier
+  - [x] Unit tests

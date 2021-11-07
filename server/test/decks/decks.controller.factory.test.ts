@@ -9,10 +9,12 @@ describe('Deck Controller', () => {
     createdAt: '11',
     updatedAt: '12',
   };
+
   const decksDaoMock: IDecksDao = {
     getDecks: () => Promise.resolve([deckDto]),
-    createDeck: () => Promise.resolve(deckDto),
     getDeckById: () => Promise.resolve(deckDto),
+    createDeck: () => Promise.resolve(deckDto),
+    updateDeck: () => Promise.resolve(deckDto),
     deleteDeck: (deckId) => Promise.resolve(deckId),
   };
 
@@ -38,6 +40,13 @@ describe('Deck Controller', () => {
 
   it('createDeck return a deck', (done) => {
     decksController.createDeck({ title: 'some title' }).then((resp) => {
+      expect(resp).toStrictEqual(deckDto);
+      done();
+    });
+  });
+
+  it('createDeck return a deck', (done) => {
+    decksController.updateDeck('id', { title: 'some title' }).then((resp) => {
       expect(resp).toStrictEqual(deckDto);
       done();
     });

@@ -13,32 +13,29 @@ export class DecksRoutes extends CommonRoutes {
   configureRoutes() {
     this.app
       .route(`/api/decks`)
-      .get((req: Request, res: Response) => {
+      .get((req: Request, res: Response, next: NextFunction) => {
         this.decksController
           .getDecks()
           .then((resp) => {
             res.status(200).send(resp);
           })
-          .catch((err) => {
-            res.status(500).send(err);
+          .catch((error) => {
+            next(error);
           });
       })
-      .post((req: Request, res: Response) => {
+      .post((req: Request, res: Response, next: NextFunction) => {
         this.decksController
           .createDeck({ title: req.body.title })
           .then((resp) => {
             res.status(200).send(resp);
           })
-          .catch((err) => {
-            res.status(500).send(err);
+          .catch((error) => {
+            next(error);
           });
       });
 
     this.app
       .route(`/api/decks/:deckId`)
-      .all((err: Error, req: Request, res: Response, next: NextFunction) => {
-        next();
-      })
       .get((req: Request, res: Response, next: NextFunction) => {
         this.decksController
           .getDeckById(req.params.deckId)
@@ -49,11 +46,15 @@ export class DecksRoutes extends CommonRoutes {
             next(error);
           });
       })
-      .put((req: Request, res: Response) => {
-        res.status(200).send(`PUT requested for id ${req.params.deckId}`);
-      })
-      .patch((req: Request, res: Response) => {
-        res.status(200).send(`PATCH requested for id ${req.params.deckId}`);
+      .put((req: Request, res: Response, next: NextFunction) => {
+        this.decksController
+          .updateDeck(req.params.deckId, { title: req.body.title })
+          .then((resp) => {
+            res.status(200).send(resp);
+          })
+          .catch((error) => {
+            next(error);
+          });
       })
       .delete((req: Request, res: Response, next: NextFunction) => {
         this.decksController
