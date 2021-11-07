@@ -3,6 +3,7 @@ import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 import { IDeckModel, TDeckDocument } from '../../model';
 import { errorCodes } from '../../const';
+import DaoValidationService from '../common/daoValidationService';
 
 class DecksDaoFactory implements IDecksDao {
   private deckModel: IDeckModel;
@@ -17,13 +18,15 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async getDeckById(deckId: string): Promise<GetDeckDto> {
+    DaoValidationService.validateId(deckId);
+
     const deck: TDeckDocument | null = await this.deckModel.findOne({ _id: deckId });
 
     if (deck) {
       return mapDaoToDto(deck);
-    } else {
-      throw new Error(errorCodes.DECK_NOT_FOUND);
     }
+
+    throw new Error(errorCodes.DECK_NOT_FOUND);
   }
 
   async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {

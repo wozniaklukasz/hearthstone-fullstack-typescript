@@ -37,7 +37,7 @@ describe('Deck DAO', () => {
   });
 
   it('getDeck return a deck', (done) => {
-    decksDao.getDeckById('myId').then((resp) => {
+    decksDao.getDeckById('6165c29b1e5377d3327c6364').then((resp) => {
       expect(resp).toStrictEqual(expectedDeckDto);
       done();
     });
@@ -61,6 +61,12 @@ describe('Deck DAO throw errors', () => {
 
   it('getDeck throws an error if deck will be null', () => {
     const expectedError = new Error(errorCodes.DECK_NOT_FOUND);
+
+    return expect(decksDao.getDeckById('6165c29b1e5377d3327c6364')).rejects.toStrictEqual(expectedError);
+  });
+
+  it('getDeck throws an error if id is incorrect', () => {
+    const expectedError = new Error(errorCodes.INVALID_ID);
 
     return expect(decksDao.getDeckById('myId')).rejects.toStrictEqual(expectedError);
   });
