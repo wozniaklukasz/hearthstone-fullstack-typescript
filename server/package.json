@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node-dev --respawn ./src/app.ts",
     "test": "jest ./test --verbose --coverage",
-    "lint": "eslint \"{src,test}/**/*.ts\" && prettier --c \"{src,test}/**/*.ts\""
+    "lint": "eslint \"{src,test}/**/*.ts\" && prettier --c \"{src,test}/**/*.ts\"",
+    "migration": "npx ts-node src\\db\\migration"
   },
   "author": "",
   "license": "ISC",

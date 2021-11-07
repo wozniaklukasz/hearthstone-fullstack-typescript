@@ -11,13 +11,27 @@ const options = {
 
 /* eslint-disable */
 
-const initDbConnection = () => {
-  console.log(`Connecting to db ${process.env.DB_NAME}...`);
-  // @ts-ignore
-  mongoose.connect(DB_URL, options, (err) => {
-    if (err) console.log(err);
-    else console.log(`Connected to db ${process.env.DB_NAME}!`);
-  });
+const initDbConnection = async () => {
+  console.log(`Initialized connection to the ${process.env.DB_NAME}...`);
+
+  try {
+    // @ts-ignore
+    await mongoose.connect(DB_URL, options);
+  } catch (error) {
+    throw error;
+  } finally {
+    console.log(`Connected to the ${process.env.DB_NAME}!`);
+  }
+};
+
+export const disconnect = async () => {
+  try {
+    await mongoose.connection.close();
+  } catch (error) {
+    throw error;
+  } finally {
+    console.log(`Disconnected from the ${process.env.DB_NAME}!`);
+  }
 };
 
 export default initDbConnection;

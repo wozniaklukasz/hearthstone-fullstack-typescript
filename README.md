@@ -16,6 +16,15 @@
 - [x] Mongoose
 - [ ] Schema validation with Yup
 
+### Database
+
+Initialize:
+```
+ npm run migration
+```
+
+Cards data comes from [HearthstoneJSON](https://hearthstonejson.com/).
+
 ## CI/CD
 
 - [x] GitHub Actions
