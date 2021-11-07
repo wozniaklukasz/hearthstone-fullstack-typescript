@@ -26,7 +26,7 @@ describe('Deck DAO', () => {
     create: () => {
       return Promise.resolve(deckDao);
     },
-    remove: () => {
+    deleteOne: () => {
       return Promise.resolve();
     },
   } as unknown as IDeckModel;
@@ -63,7 +63,7 @@ describe('Deck DAO', () => {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    deckModelMock.remove = jest.fn(() => ({ deletedCount: 1 }));
+    deckModelMock.deleteOne = jest.fn(() => ({ deletedCount: 1 }));
 
     decksDao.deleteDeck(idToDelete).then((resp) => {
       expect(resp).toBe(idToDelete);
@@ -97,17 +97,17 @@ describe('Deck DAO throw errors', () => {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    deckModelMock.remove = jest.fn(() => ({ deletedCount: 0 }));
+    deckModelMock.deleteOne = jest.fn(() => ({ deletedCount: 0 }));
 
     return expect(decksDao.getDeckById('6165c29b1e5377d3327c6364')).rejects.toStrictEqual(expectedError);
   });
 
-  it('deleteDeck throws an error if response from deckModel.remove will NOT contains deletedCount', () => {
+  it('deleteDeck throws an error if response from deckModel.deleteOne will NOT contains deletedCount', () => {
     const expectedError = new Error(errorCodes.DECK_NOT_FOUND);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    deckModelMock.remove = jest.fn(() => ({}));
+    deckModelMock.deleteOne = jest.fn(() => ({}));
 
     return expect(decksDao.deleteDeck('6165c29b1e5377d3327c6364')).rejects.toStrictEqual(expectedError);
   });

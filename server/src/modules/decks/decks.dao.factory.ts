@@ -38,7 +38,7 @@ class DecksDaoFactory implements IDecksDao {
   async deleteDeck(deckId: string): Promise<string> {
     DaoValidationService.validateId(deckId);
 
-    const deleteResult: DeleteResult = await this.deckModel.remove({ _id: deckId });
+    const deleteResult: DeleteResult = await this.deckModel.deleteOne({ _id: deckId });
 
     if (deleteResult && deleteResult.deletedCount > 0) {
       return deckId;
