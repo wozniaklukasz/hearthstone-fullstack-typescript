@@ -55,8 +55,15 @@ export class DecksRoutes extends CommonRoutes {
       .patch((req: Request, res: Response) => {
         res.status(200).send(`PATCH requested for id ${req.params.deckId}`);
       })
-      .delete((req: Request, res: Response) => {
-        res.status(200).send(`DELETE requested for id ${req.params.deckId}`);
+      .delete((req: Request, res: Response, next: NextFunction) => {
+        this.decksController
+          .deleteDeck(req.params.deckId)
+          .then((resp) => {
+            res.status(200).send(resp);
+          })
+          .catch((error) => {
+            next(error);
+          });
       });
   }
 }

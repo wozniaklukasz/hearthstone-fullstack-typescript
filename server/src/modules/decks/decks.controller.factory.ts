@@ -19,6 +19,10 @@ class DecksControllerFactory {
   async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
     return this.decksDao.createDeck(deckDto);
   }
+
+  async deleteDeck(deckId: string): Promise<string> {
+    return this.decksDao.deleteDeck(deckId);
+  }
 }
 
 export default DecksControllerFactory;

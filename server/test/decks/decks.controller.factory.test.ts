@@ -13,8 +13,14 @@ describe('Deck Controller', () => {
     getDecks: () => Promise.resolve([deckDto]),
     createDeck: () => Promise.resolve(deckDto),
     getDeckById: () => Promise.resolve(deckDto),
+    deleteDeck: (deckId) => Promise.resolve(deckId),
   };
-  const decksController = new DecksControllerFactory(decksDaoMock);
+
+  let decksController: DecksControllerFactory;
+
+  beforeEach(() => {
+    decksController = new DecksControllerFactory(decksDaoMock);
+  });
 
   it('getDecks return list of decks', (done) => {
     decksController.getDecks().then((resp) => {
@@ -33,6 +39,13 @@ describe('Deck Controller', () => {
   it('createDeck return a deck', (done) => {
     decksController.createDeck({ title: 'some title' }).then((resp) => {
       expect(resp).toStrictEqual(deckDto);
+      done();
+    });
+  });
+
+  it('deleteDeck return a deck id', (done) => {
+    decksController.deleteDeck('some id').then((resp) => {
+      expect(resp).toBe('some id');
       done();
     });
   });
