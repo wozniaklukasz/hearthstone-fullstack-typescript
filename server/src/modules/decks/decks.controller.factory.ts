@@ -1,7 +1,7 @@
 import { CreateDeckDto, GetDeckDto } from './types';
-import { IDecksDao } from './interfaces';
+import { IDecksController, IDecksDao } from './interfaces';
 
-class DecksControllerFactory {
+class DecksControllerFactory implements IDecksController {
   private decksDao: IDecksDao;
 
   constructor(decksDao: IDecksDao) {

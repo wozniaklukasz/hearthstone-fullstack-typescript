@@ -1,4 +1,4 @@
-import { IDecksDao } from '../../src/modules/decks/interfaces';
+import { IDecksController, IDecksDao } from '../../src/modules/decks/interfaces';
 import DecksControllerFactory from '../../src/modules/decks/decks.controller.factory';
 import { GetDeckDto } from '../../src/modules/decks/types';
 
@@ -16,7 +16,7 @@ describe('Deck Controller', () => {
     deleteDeck: (deckId) => Promise.resolve(deckId),
   };
 
-  let decksController: DecksControllerFactory;
+  let decksController: IDecksController;
 
   beforeEach(() => {
     decksController = new DecksControllerFactory(decksDaoMock);
