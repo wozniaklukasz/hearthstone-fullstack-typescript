@@ -4,6 +4,27 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { connection } from 'mongoose';
 import initDbConnection, { disconnect } from '../index';
+import { CreateCardDto } from '../../modules/cards/types';
+
+const mapJsonCardToCardDto = (jsonCards: any[]): CreateCardDto[] =>
+  jsonCards.map((jCard) => ({
+    imageId: jCard.id,
+    name: jCard.name,
+    text: jCard.text,
+    flavor: jCard.flavor,
+    artist: jCard.artist,
+    attack: jCard.attack,
+    cardClass: jCard.cardClass,
+    collectible: jCard.collectible,
+    cost: jCard.cost,
+    elite: jCard.elite,
+    faction: jCard.faction,
+    health: jCard.health,
+    mechanics: jCard.mechanics,
+    rarity: jCard.rarity,
+    set: jCard.set,
+    type: jCard.type,
+  }));
 
 const initAdmin = async () => {
   const user = {
@@ -28,7 +49,7 @@ const initCards = async () => {
     cards = cards.concat(JSON.parse(JSON.stringify(data)));
   });
 
-  await connection.collection('cards').insertMany(cards);
+  await connection.collection('cards').insertMany(mapJsonCardToCardDto(cards));
   console.log(`${cards.length} cards loaded!`);
 };
 
