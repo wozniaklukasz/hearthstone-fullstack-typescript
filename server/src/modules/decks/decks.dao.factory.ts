@@ -2,7 +2,7 @@ import { DeleteResult, UpdateResult } from 'mongodb';
 import { CreateDeckDto, GetDeckDto } from './types';
 import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
-import { IDeckModel, TDeckDocument } from '../../model';
+import { IDeckModel, DeckDocument } from '../../model';
 import { errorCodes } from '../../const';
 import DaoValidationService from '../common/daoValidationService';
 
@@ -14,14 +14,14 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async getDecks(): Promise<GetDeckDto[]> {
-    const decks: TDeckDocument[] = await this.deckModel.find({});
+    const decks: DeckDocument[] = await this.deckModel.find({});
     return mapDaoListToDtoList(decks);
   }
 
   async getDeckById(deckId: string): Promise<GetDeckDto> {
     DaoValidationService.validateId(deckId);
 
-    const deck: TDeckDocument | null = await this.deckModel.findOne({ _id: deckId });
+    const deck: DeckDocument | null = await this.deckModel.findOne({ _id: deckId });
 
     if (deck) {
       return mapDaoToDto(deck);
@@ -31,7 +31,7 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
-    const deck: TDeckDocument = await this.deckModel.create(deckDto);
+    const deck: DeckDocument = await this.deckModel.create(deckDto);
     return mapDaoToDto(deck);
   }
 

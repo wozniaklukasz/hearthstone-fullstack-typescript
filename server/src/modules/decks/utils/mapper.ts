@@ -1,7 +1,7 @@
 import { GetDeckDto } from '../types';
-import { TDeckDocument } from '../../../model';
+import { DeckDocument } from '../../../model';
 
-const mapDaoToDto = (dao: TDeckDocument): GetDeckDto => {
+const mapDaoToDto = (dao: DeckDocument): GetDeckDto => {
   return {
     id: dao._id,
     title: dao.title,
@@ -10,8 +10,8 @@ const mapDaoToDto = (dao: TDeckDocument): GetDeckDto => {
   };
 };
 
-const mapDaoListToDtoList = (daoList: TDeckDocument[]): GetDeckDto[] => {
-  return daoList.map((dao: TDeckDocument) => mapDaoToDto(dao));
+const mapDaoListToDtoList = (daoList: DeckDocument[]): GetDeckDto[] => {
+  return daoList.map((dao: DeckDocument) => mapDaoToDto(dao));
 };
 
 export { mapDaoToDto, mapDaoListToDtoList };

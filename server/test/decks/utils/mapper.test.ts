@@ -1,10 +1,10 @@
 import { GetDeckDto } from 'src/modules/decks/types';
 import { mapDaoListToDtoList, mapDaoToDto } from 'src/modules/decks/utils';
-import { TDeckDocument } from 'src/model';
+import { DeckDocument } from 'src/model';
 
 describe('Deck mapper works', () => {
   it('DAO is mapped to DTO', () => {
-    const deckDao: TDeckDocument = {
+    const deckDao: DeckDocument = {
       _id: 'id',
       title: 'title',
       updatedAt: '11/02',
@@ -22,7 +22,7 @@ describe('Deck mapper works', () => {
   });
 
   it('DAO array is mapped to DTO', () => {
-    const decksDao: TDeckDocument[] = [
+    const decksDao: DeckDocument[] = [
       {
         _id: 'id',
         title: 'title',

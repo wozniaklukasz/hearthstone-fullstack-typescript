@@ -1,9 +1,9 @@
 import DecksDaoFactory from 'src/modules/decks/decks.dao.factory';
 import { GetDeckDto } from 'src/modules/decks/types';
-import { IDeckModel, TDeckDocument } from 'src/model';
+import { IDeckModel, DeckDocument } from 'src/model';
 import { errorCodes } from 'src/const';
 
-const deckDao: TDeckDocument = {
+const deckDao: DeckDocument = {
   _id: 'id',
   title: 'title',
   createdAt: '11',
