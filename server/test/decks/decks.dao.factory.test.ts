@@ -18,7 +18,9 @@ const expectedDeckDto: GetDeckDto = {
 };
 
 const deckModelMock = {
-  find: () => {
+  // find is mocked this way because of chaining .limit() on it (https://stackoverflow.com/questions/57719741/how-do-i-mock-and-test-chained-function-with-jest)
+  find: jest.fn().mockReturnThis(),
+  limit: () => {
     return Promise.resolve([deckDao]);
   },
   findOne: () => {
