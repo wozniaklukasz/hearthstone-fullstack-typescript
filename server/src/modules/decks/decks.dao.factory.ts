@@ -3,7 +3,7 @@ import { CreateDeckDto, GetDeckDto } from './types';
 import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 import { IDeckModel, DeckDocument } from '../../model';
-import { errorCodes } from '../../const';
+import { DB_QUERY_LIMIT, errorCodes } from '../../const';
 import DaoValidationService from '../common/daoValidationService';
 
 class DecksDaoFactory implements IDecksDao {
@@ -14,7 +14,7 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async getDecks(): Promise<GetDeckDto[]> {
-    const decks: DeckDocument[] = await this.deckModel.find({});
+    const decks: DeckDocument[] = await this.deckModel.find({}).limit(DB_QUERY_LIMIT);
     return mapDaoListToDtoList(decks);
   }
 

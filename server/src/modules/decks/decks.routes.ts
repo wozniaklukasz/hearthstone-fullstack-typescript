@@ -1,9 +1,10 @@
 import { Application, Request, Response, NextFunction } from 'express';
 import { CommonRoutes } from '../common/common.routes';
 import DecksController from './decks.controller';
+import { IDecksController } from './interfaces';
 
 export class DecksRoutes extends CommonRoutes {
-  decksController;
+  private decksController: IDecksController;
 
   constructor(app: Application) {
     super(app);
@@ -35,10 +36,10 @@ export class DecksRoutes extends CommonRoutes {
       });
 
     this.app
-      .route(`/api/decks/:deckId`)
+      .route(`/api/decks/:id`)
       .get((req: Request, res: Response, next: NextFunction) => {
         this.decksController
-          .getDeckById(req.params.deckId)
+          .getDeckById(req.params.id)
           .then((resp) => {
             res.status(200).send(resp);
           })
@@ -48,7 +49,7 @@ export class DecksRoutes extends CommonRoutes {
       })
       .put((req: Request, res: Response, next: NextFunction) => {
         this.decksController
-          .updateDeck(req.params.deckId, { title: req.body.title })
+          .updateDeck(req.params.id, { title: req.body.title })
           .then((resp) => {
             res.status(200).send(resp);
           })
@@ -58,7 +59,7 @@ export class DecksRoutes extends CommonRoutes {
       })
       .delete((req: Request, res: Response, next: NextFunction) => {
         this.decksController
-          .deleteDeck(req.params.deckId)
+          .deleteDeck(req.params.id)
           .then((resp) => {
             res.status(200).send(resp);
           })
