@@ -1,1 +1,1 @@
-export { CreateDeckDto, GetDeckDto } from './dto';
+export { CreateDeckDto, GetDeckDto } from './Deck.dto';
