@@ -1,6 +1,6 @@
 # hearthstone-ts
 
-[![ci](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/ci.yml)
+[![CI](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/wozniaklukasz/hearthstone-ts/actions/workflows/ci.yml)
 
 ## Client
 
