@@ -18,6 +18,8 @@ describe('Decks routes works', () => {
       deleteDeck: () => Promise.resolve('123'),
     };
 
+    // express.json() is required to make post/put work
+    app.use(express.json());
     new DecksRoutesFactory(app, decksControllerMock);
   });
 

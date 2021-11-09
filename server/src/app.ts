@@ -4,7 +4,6 @@ dotenv.config();
 import express from 'express';
 import * as http from 'http';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 
 import initDbConnection from './db';
 import { logger, errorLogger } from './helpers/logger';
@@ -18,12 +17,10 @@ const port = 3000;
 initDbConnection();
 
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: true,
   }),
 );
-app.use(bodyParser.json());
-app.use(express.json());
 app.use(cors());
 app.use(logger);
 
