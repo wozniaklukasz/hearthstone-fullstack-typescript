@@ -2,28 +2,8 @@ import express, { Application } from 'express';
 import request from 'supertest';
 import { CardsRoutesFactory } from '../../src/modules/cards/cards.routes.factory';
 import { ICardsController } from '../../src/modules/cards/interfaces';
-import { GetCardDto } from '../../src/modules/cards/types';
 import { errorHandler } from '../../src/helpers/errorHandler';
-
-const cardDto: GetCardDto = {
-  id: 'id',
-  imageId: 'string',
-  name: 'string',
-  text: 'string',
-  flavor: 'string',
-  artist: 'string',
-  attack: 10,
-  cardClass: 'any',
-  collectible: true,
-  cost: 20,
-  elite: true,
-  faction: 'any',
-  health: 8,
-  mechanics: [],
-  rarity: 'any',
-  cardSet: 'any',
-  type: 'any',
-};
+import { cardDto } from './consts';
 
 describe('Cards routes works', () => {
   let app: Application;

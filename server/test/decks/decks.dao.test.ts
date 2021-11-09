@@ -1,22 +1,8 @@
 import DecksDaoFactory from 'src/modules/decks/decks.dao.factory';
-import { GetDeckDto } from 'src/modules/decks/types';
-import { IDeckModel, DeckDocument } from 'src/model';
+import { IDeckModel } from 'src/model';
 import { errorCodes } from 'src/const';
 import { IDecksDao } from '../../src/modules/decks/interfaces';
-
-const deckDao: DeckDocument = {
-  _id: 'id',
-  title: 'title',
-  createdAt: '11',
-  updatedAt: '12',
-};
-
-const expectedDeckDto: GetDeckDto = {
-  id: 'id',
-  title: 'title',
-  createdAt: '11',
-  updatedAt: '12',
-};
+import { deckDao, deckDto } from './consts';
 
 const deckModelMock = {
   // find is mocked this way because of chaining .limit() on it (https://stackoverflow.com/questions/57719741/how-do-i-mock-and-test-chained-function-with-jest)
@@ -47,21 +33,21 @@ describe('Deck DAO', () => {
 
   it('getDecks return list of decks', (done) => {
     decksDao.getDecks().then((resp) => {
-      expect(resp).toStrictEqual([expectedDeckDto]);
+      expect(resp).toStrictEqual([deckDto]);
       done();
     });
   });
 
   it('getDeckById return a deck', (done) => {
     decksDao.getDeckById('6165c29b1e5377d3327c6364').then((resp) => {
-      expect(resp).toStrictEqual(expectedDeckDto);
+      expect(resp).toStrictEqual(deckDto);
       done();
     });
   });
 
   it('createDeck return a deck', (done) => {
     decksDao.createDeck({ title: 'some title' }).then((resp) => {
-      expect(resp).toStrictEqual(expectedDeckDto);
+      expect(resp).toStrictEqual(deckDto);
       done();
     });
   });
@@ -73,8 +59,8 @@ describe('Deck DAO', () => {
     // @ts-ignore
     deckModelMock.updateOne = jest.fn(() => ({ modifiedCount: 1 }));
 
-    decksDao.updateDeck(idToUpdate, expectedDeckDto).then((resp) => {
-      expect(resp).toStrictEqual(expectedDeckDto);
+    decksDao.updateDeck(idToUpdate, deckDto).then((resp) => {
+      expect(resp).toStrictEqual(deckDto);
       done();
     });
   });
@@ -123,15 +109,13 @@ describe('Deck DAO throw errors', () => {
     // @ts-ignore
     deckModelMock.updateOne = jest.fn(() => ({ modifiedCount: 0 }));
 
-    return expect(decksDao.updateDeck('6165c29b1e5377d3327c6364', expectedDeckDto)).rejects.toStrictEqual(
-      expectedError,
-    );
+    return expect(decksDao.updateDeck('6165c29b1e5377d3327c6364', deckDto)).rejects.toStrictEqual(expectedError);
   });
 
   it('updateDeck throws an error if id is incorrect', () => {
     const expectedError = new Error(errorCodes.INVALID_ID);
 
-    return expect(decksDao.updateDeck('myId', expectedDeckDto)).rejects.toStrictEqual(expectedError);
+    return expect(decksDao.updateDeck('myId', deckDto)).rejects.toStrictEqual(expectedError);
   });
 
   it('deleteDeck throws an error if number of deleted decks will be less than 1', () => {

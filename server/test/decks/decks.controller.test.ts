@@ -1,15 +1,8 @@
 import { IDecksController, IDecksDao } from '../../src/modules/decks/interfaces';
 import DecksControllerFactory from '../../src/modules/decks/decks.controller.factory';
-import { GetDeckDto } from '../../src/modules/decks/types';
+import { deckDto } from './consts';
 
 describe('Deck Controller', () => {
-  const deckDto: GetDeckDto = {
-    id: 'id',
-    title: 'title',
-    createdAt: '11',
-    updatedAt: '12',
-  };
-
   const decksDaoMock: IDecksDao = {
     getDecks: () => Promise.resolve([deckDto]),
     getDeckById: () => Promise.resolve(deckDto),

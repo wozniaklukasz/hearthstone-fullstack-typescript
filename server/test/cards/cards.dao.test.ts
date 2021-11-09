@@ -1,48 +1,8 @@
 import { errorCodes } from 'src/const';
 import CardsDaoFactory from '../../src/modules/cards/cards.dao.factory';
 import { ICardsDao } from '../../src/modules/cards/interfaces';
-import { CardDocument, ICardModel } from '../../src/model/card';
-import { GetCardDto } from '../../src/modules/cards/types';
-
-const cardDao: CardDocument = {
-  _id: 'id',
-  imageId: 'string',
-  name: 'string',
-  text: 'string',
-  flavor: 'string',
-  artist: 'string',
-  attack: 10,
-  cardClass: 'any',
-  collectible: true,
-  cost: 20,
-  elite: true,
-  faction: 'any',
-  health: 8,
-  mechanics: [],
-  rarity: 'any',
-  cardSet: 'any',
-  type: 'any',
-};
-
-const expectedCardDto: GetCardDto = {
-  id: 'id',
-  imageId: 'string',
-  name: 'string',
-  text: 'string',
-  flavor: 'string',
-  artist: 'string',
-  attack: 10,
-  cardClass: 'any',
-  collectible: true,
-  cost: 20,
-  elite: true,
-  faction: 'any',
-  health: 8,
-  mechanics: [],
-  rarity: 'any',
-  cardSet: 'any',
-  type: 'any',
-};
+import { ICardModel } from '../../src/model/card';
+import { cardDao, cardDto } from './consts';
 
 const cardModelMock = {
   find: jest.fn().mockReturnThis(),
@@ -63,14 +23,14 @@ describe('Card DAO', () => {
 
   it('getCards return list of cards', (done) => {
     cardsDao.getCards().then((resp) => {
-      expect(resp).toStrictEqual([expectedCardDto]);
+      expect(resp).toStrictEqual([cardDto]);
       done();
     });
   });
 
   it('getCardById return a card', (done) => {
     cardsDao.getCardById('6165c29b1e5377d3327c6364').then((resp) => {
-      expect(resp).toStrictEqual(expectedCardDto);
+      expect(resp).toStrictEqual(cardDto);
       done();
     });
   });

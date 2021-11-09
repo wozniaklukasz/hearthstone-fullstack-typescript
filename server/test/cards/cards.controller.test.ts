@@ -1,28 +1,8 @@
-import { GetCardDto } from '../../src/modules/cards/types';
 import { ICardsController, ICardsDao } from '../../src/modules/cards/interfaces';
 import CardsControllerFactory from '../../src/modules/cards/cards.controller.factory';
+import { cardDto } from './consts';
 
 describe('Card Controller', () => {
-  const cardDto: GetCardDto = {
-    id: 'id',
-    imageId: 'string',
-    name: 'string',
-    text: 'string',
-    flavor: 'string',
-    artist: 'string',
-    attack: 10,
-    cardClass: 'any',
-    collectible: true,
-    cost: 20,
-    elite: true,
-    faction: 'any',
-    health: 8,
-    mechanics: [],
-    rarity: 'any',
-    cardSet: 'any',
-    type: 'any',
-  };
-
   const cardsDaoMock: ICardsDao = {
     getCards: () => Promise.resolve([cardDto]),
     getCardById: () => Promise.resolve(cardDto),
