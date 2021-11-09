@@ -7,6 +7,7 @@
     "start": "ts-node-dev --respawn ./src/app.ts",
     "test": "jest ./test --verbose --coverage",
     "lint": "eslint \"{src,test}/**/*.ts\" && prettier --c \"{src,test}/**/*.ts\"",
+    "lint-fix": "eslint --fix \"{src,test}/**/*.ts\" && prettier --write \"{src,test}/**/*.ts\"",
     "migration": "npx ts-node src\\db\\migration"
   },
   "author": "",

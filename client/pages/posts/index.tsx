@@ -1,7 +1,7 @@
-import Layout from "../../ui/Layout";
-import { getSortedPostsData } from "../../lib/posts";
-import Link from "next/link";
-import { GetStaticProps } from "next";
+import Layout from '../../ui/Layout';
+import { getSortedPostsData } from '../../lib/posts';
+import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 export default function Home({
   allPostsData,
@@ -17,7 +17,7 @@ export default function Home({
       <section>
         <p>[Your Self Introduction]</p>
         <p>
-          (This is a sample website - you’ll be building a site like this in{" "}
+          (This is a sample website - you’ll be building a site like this in{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
       </section>

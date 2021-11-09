@@ -6,7 +6,8 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --c \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\""
+    "lint": "eslint \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --c \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\"",
+    "lint-fix": "eslint --fix \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --write \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "date-fns": "^2.11.1",
