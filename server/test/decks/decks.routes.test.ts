@@ -68,15 +68,29 @@ describe('decks routes handle errors', () => {
       },
     };
 
+    // express.json() is required to make post/put work
+    app.use(express.json());
     new DecksRoutesFactory(app, decksControllerMock);
     app.use(errorHandler);
   });
 
-  it('/api/decks returns error message', (done) => {
+  it('GET /api/decks returns error message', (done) => {
     request(app).get('/api/decks').expect(500).expect(expectedError, done);
   });
 
-  it('/api/decks/:id returns error message', (done) => {
+  it('GET /api/decks/:id returns error message', (done) => {
     request(app).get('/api/decks/123').expect(500).expect(expectedError, done);
+  });
+
+  it('POST /api/decks returns error message', (done) => {
+    request(app).post('/api/decks').expect(500).expect(expectedError, done);
+  });
+
+  it('PUT /api/decks/:id returns error message', (done) => {
+    request(app).put('/api/decks/123').expect(500).expect(expectedError, done);
+  });
+
+  it('DELETE /api/decks/:id returns error message', (done) => {
+    request(app).delete('/api/decks/123').expect(500).expect(expectedError, done);
   });
 });

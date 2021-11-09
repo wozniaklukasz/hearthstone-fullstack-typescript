@@ -18,11 +18,11 @@ describe('Cards routes works', () => {
     new CardsRoutesFactory(app, cardsControllerMock);
   });
 
-  it('/api/cards returns list of cards', (done) => {
+  it('GET /api/cards returns list of cards', (done) => {
     request(app).get('/api/cards').expect(200).expect([cardDto], done);
   });
 
-  it('/api/cards/:id returns a card', (done) => {
+  it('GET /api/cards/:id returns a card', (done) => {
     request(app).get('/api/cards/123').expect(200).expect(cardDto, done);
   });
 });
@@ -46,11 +46,11 @@ describe('Cards routes handle errors', () => {
     app.use(errorHandler);
   });
 
-  it('/api/cards returns error message', (done) => {
+  it('GET /api/cards returns error message', (done) => {
     request(app).get('/api/cards').expect(500).expect(expectedError, done);
   });
 
-  it('/api/cards/:id returns error message', (done) => {
+  it('GET /api/cards/:id returns error message', (done) => {
     request(app).get('/api/cards/123').expect(500).expect(expectedError, done);
   });
 });
