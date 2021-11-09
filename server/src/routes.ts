@@ -4,7 +4,7 @@ import { CardsRoutes } from './modules/cards/cards.routes';
 
 const initRoutes = (app: express.Application) => {
   new DecksRoutes(app);
-  new CardsRoutes(app);
+  CardsRoutes(app);
 };
 
 export default initRoutes;
