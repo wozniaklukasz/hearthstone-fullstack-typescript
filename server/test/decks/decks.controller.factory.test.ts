@@ -45,7 +45,7 @@ describe('Deck Controller', () => {
     });
   });
 
-  it('createDeck return a deck', (done) => {
+  it('updateDeck return a deck', (done) => {
     decksController.updateDeck('id', { title: 'some title' }).then((resp) => {
       expect(resp).toStrictEqual(deckDto);
       done();
