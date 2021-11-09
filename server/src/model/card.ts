@@ -16,7 +16,7 @@ type CardDocument = Partial<Document> & {
   health: number;
   mechanics: any[];
   rarity: any;
-  set: any;
+  cardSet: any;
   type: any;
 };
 

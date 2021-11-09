@@ -18,7 +18,7 @@ const mapDaoToDto = (dao: CardDocument): GetCardDto => {
     health: dao.health,
     mechanics: dao.mechanics,
     rarity: dao.rarity,
-    set: dao.set,
+    cardSet: dao.cardSet,
     type: dao.type,
   };
 };

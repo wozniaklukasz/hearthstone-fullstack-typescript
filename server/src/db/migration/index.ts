@@ -22,7 +22,7 @@ const mapJsonCardToCardDto = (jsonCards: any[]): CreateCardDto[] =>
     health: jCard.health,
     mechanics: jCard.mechanics,
     rarity: jCard.rarity,
-    set: jCard.set,
+    cardSet: jCard.set,
     type: jCard.type,
   }));
 

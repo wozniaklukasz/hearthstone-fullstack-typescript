@@ -2,6 +2,7 @@ import DecksDaoFactory from 'src/modules/decks/decks.dao.factory';
 import { GetDeckDto } from 'src/modules/decks/types';
 import { IDeckModel, DeckDocument } from 'src/model';
 import { errorCodes } from 'src/const';
+import { IDecksDao } from '../../src/modules/decks/interfaces';
 
 const deckDao: DeckDocument = {
   _id: 'id',
@@ -38,7 +39,7 @@ const deckModelMock = {
 } as unknown as IDeckModel;
 
 describe('Deck DAO', () => {
-  let decksDao: DecksDaoFactory;
+  let decksDao: IDecksDao;
 
   beforeEach(() => {
     decksDao = new DecksDaoFactory(deckModelMock);

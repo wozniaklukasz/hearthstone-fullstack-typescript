@@ -15,7 +15,7 @@ type CardDto = {
   health: number;
   mechanics: any[];
   rarity: any;
-  set: any;
+  cardSet: any;
   type: any;
 };
 
