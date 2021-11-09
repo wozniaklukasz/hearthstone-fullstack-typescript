@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --c \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\"",
+    "lint-fix": "eslint --fix \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --write \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "date-fns": "^2.11.1",
@@ -19,6 +21,11 @@
   "devDependencies": {
     "@types/node": "^16.10.2",
     "@types/react": "^17.0.27",
-    "typescript": "^4.4.3"
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "eslint": "^8.2.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "2.4.1",
+    "typescript": "^4.4.4"
   }
 }

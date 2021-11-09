@@ -1,0 +1,27 @@
+name: client
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+      - name: Installing packages
+        run: npm ci
+      - name: Eslint and prettier check
+        run: npm run lint
+#      - name: Unit testing
+#        run: npm test
+      - name: Build
+        run: npm run build
