@@ -5,7 +5,8 @@
 ## Client
 
 - [x] React
-- [x] NextJS
+- [x] NextJS (SSG & SSR)
+- [x] React Query & Axios
 - [ ] chakra-ui
 
 ## Server
