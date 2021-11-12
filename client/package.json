@@ -10,11 +10,13 @@
     "lint-fix": "eslint --fix \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --write \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\""
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "^12.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-query": "^3.32.2",
     "remark": "^12.0.0",
     "remark-html": "^12.0.0"
   },

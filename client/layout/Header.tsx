@@ -15,7 +15,7 @@ const Header: React.FC<Props> = () => {
       <nav>
         <ul>
           {pages.map((page) => (
-            <li>
+            <li key={page.href}>
               <Link href={page.href}>
                 <a>{page.name}</a>
               </Link>
