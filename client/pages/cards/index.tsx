@@ -3,6 +3,7 @@ import Layout from '../../layout/Layout';
 import { GetStaticProps } from 'next';
 import { getCards } from '../../api/endpoints/cards';
 import { GetCardDto } from '../../dto';
+import Link from 'next/link';
 
 interface Props {
   cards: GetCardDto[];
@@ -27,7 +28,9 @@ const Cards: React.FC<Props> = ({ cards }) => {
               <td>{card.cardClass}</td>
               <td>{card.type}</td>
               <td>
-                <a href={`/cards/${card.id}`}>Link</a>
+                <Link href={`/cards/${card.id}`}>
+                  <button>Link</button>
+                </Link>
               </td>
             </tr>
           ))}

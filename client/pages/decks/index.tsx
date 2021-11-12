@@ -2,7 +2,8 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import Layout from '../../layout/Layout';
 import { GetDeckDto } from '../../dto';
-import { getDecks } from '../../api/endpoints/decks';
+import { createDeck, deleteDeck, getDecks, updateDeck } from '../../api/endpoints/decks';
+import Link from 'next/link';
 
 interface Props {
   decks: GetDeckDto[];
@@ -11,6 +12,15 @@ interface Props {
 const Decks: React.FC<Props> = ({ decks }) => {
   return (
     <Layout title="Decks">
+      <button
+        onClick={() =>
+          createDeck({
+            title: `New deck!`,
+          })
+        }
+      >
+        Create
+      </button>
       <table>
         <thead>
           <tr>
@@ -27,7 +37,20 @@ const Decks: React.FC<Props> = ({ decks }) => {
               <td>{deck.createdAt}</td>
               <td>{deck.updatedAt}</td>
               <td>
-                <a href={`/decks/${deck.id}`}>Link</a>
+                <Link href={`/decks/${deck.id}`}>
+                  <button>Link</button>
+                </Link>
+                <button
+                  onClick={() =>
+                    updateDeck({
+                      ...deck,
+                      title: `rand title ${Math.random()}`,
+                    })
+                  }
+                >
+                  Update
+                </button>
+                <button onClick={() => deleteDeck(deck.id)}>Delete</button>
               </td>
             </tr>
           ))}

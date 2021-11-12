@@ -2,14 +2,29 @@ import React from 'react';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Layout from '../../layout/Layout';
 import { GetDeckDto } from '../../dto';
-import { getDeck } from '../../api/endpoints/decks';
+import { deleteDeck, getDeck, updateDeck } from '../../api/endpoints/decks';
 
 interface Props {
   deck: GetDeckDto;
 }
 
 const Deck: React.FC<Props> = ({ deck }) => {
-  return <Layout title={deck.title}>{deck.title}</Layout>;
+  return (
+    <Layout title={deck.title}>
+      {deck.title}
+      <button
+        onClick={() =>
+          updateDeck({
+            ...deck,
+            title: `rand title ${Math.random()}`,
+          })
+        }
+      >
+        Update
+      </button>
+      <button onClick={() => deleteDeck(deck.id)}>Delete</button>
+    </Layout>
+  );
 };
 
 export default Deck;

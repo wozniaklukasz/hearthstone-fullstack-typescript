@@ -1,7 +1,12 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
-const api = axios.create({
+const config: AxiosRequestConfig = {
   baseURL: `${process.env.SERVER_URL}api`,
-});
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
+
+const api = axios.create(config);
 
 export default api;
