@@ -4,10 +4,10 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+const postsDirectory = path.join(process.cwd(), 'blog');
 
 export function getSortedPostsData() {
-  // Get file names under /posts
+  // Get file names under /blog
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
@@ -26,7 +26,7 @@ export function getSortedPostsData() {
       ...(matterResult.data as { date: string; title: string }),
     };
   });
-  // Sort posts by date
+  // Sort blog by date
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;

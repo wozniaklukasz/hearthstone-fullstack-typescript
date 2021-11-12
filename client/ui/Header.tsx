@@ -8,7 +8,7 @@ const Header: React.FC<Props> = () => (
     <Link href="/">
       <a>Home</a>
     </Link>
-    <Link href="/posts">
+    <Link href="/blog">
       <a>Blog</a>
     </Link>
   </nav>
