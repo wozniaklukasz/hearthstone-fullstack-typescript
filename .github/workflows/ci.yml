@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, develop]
 jobs:
-  client-lint-and-build:
+  client:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,9 +23,9 @@ jobs:
         run: npm run lint
 #      - name: Unit testing
 #        run: npm test
-      - name: Build
-        run: npm run build
-  server-unit-testing:
+#      - name: Build
+#        run: npm run build
+  server:
     runs-on: ubuntu-latest
     defaults:
       run:

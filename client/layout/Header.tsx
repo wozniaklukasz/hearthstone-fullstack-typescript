@@ -6,6 +6,7 @@ interface Props {}
 const Header: React.FC<Props> = () => {
   const pages = [
     { href: '/', name: 'Home' },
+    { href: '/decks', name: 'Decks' },
     { href: '/cards', name: 'Cards' },
     { href: '/blog', name: 'Blog' },
   ];

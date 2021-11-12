@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Layout from '../../layout/Layout';
 import { GetCardDto } from '../../dto';
 import { getCard, getCards } from '../../api/endpoints/cards';
@@ -8,7 +8,7 @@ interface Props {
   card: GetCardDto;
 }
 
-const Cards: React.FC<Props> = ({ card }) => {
+const Card: React.FC<Props> = ({ card }) => {
   return (
     <Layout title={card.name}>
       <img alt={card.name} src={`https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${card.imageId}.png`} />
@@ -16,7 +16,7 @@ const Cards: React.FC<Props> = ({ card }) => {
   );
 };
 
-export default Cards;
+export default Card;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: cards } = await getCards();
@@ -28,7 +28,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const { params } = context;
   const { data: card } = await getCard(params.id as string);
 
   return {

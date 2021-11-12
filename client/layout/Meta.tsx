@@ -8,7 +8,7 @@ interface Props {
 
 const Meta: React.FC<Props> = ({ siteTitle, title }) => (
   <Head>
-    <title>{`hearthstone-ts ${title ? ` | ${title}` : ''}`}</title>
+    <title>{`${title ? `${title} | ` : ''}hearthstone-ts`}</title>
     <link rel="icon" href="/favicon.ico" />
     <meta name="description" content="Learn how to build a personal website using Next.js" />
     <meta
