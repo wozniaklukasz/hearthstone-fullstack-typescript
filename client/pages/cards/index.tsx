@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../../layout/Layout';
-import { GetStaticProps } from 'next';
-import { getCards } from '../../api/endpoints/cards';
-import { GetCardDto } from '../../dto';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
+import Layout from 'layout';
+import { getCards } from 'api';
+import { GetCardDto } from 'dto';
 
 interface Props {
   cards: GetCardDto[];
@@ -46,6 +46,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data: cards } = await getCards();
 
   return {
-    props: { cards }, // will be passed to the page component as props
+    props: { cards },
   };
 };

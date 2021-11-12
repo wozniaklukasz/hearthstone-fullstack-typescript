@@ -1,9 +1,9 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
-import Layout from '../../layout/Layout';
-import { GetDeckDto } from '../../dto';
-import { createDeck, deleteDeck, getDecks, updateDeck } from '../../api/endpoints/decks';
 import Link from 'next/link';
+import { GetServerSideProps } from 'next';
+import Layout from 'layout';
+import { GetDeckDto } from 'dto';
+import { createDeck, deleteDeck, getDecks, updateDeck } from 'api/endpoints';
 
 interface Props {
   decks: GetDeckDto[];
@@ -66,6 +66,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { data: decks } = await getDecks();
 
   return {
-    props: { decks }, // will be passed to the page component as props
+    props: { decks },
   };
 };

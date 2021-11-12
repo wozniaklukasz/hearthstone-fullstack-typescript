@@ -1,8 +1,8 @@
 import React from 'react';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import Layout from '../../layout/Layout';
-import { GetDeckDto } from '../../dto';
-import { deleteDeck, getDeck, updateDeck } from '../../api/endpoints/decks';
+import Layout from 'layout';
+import { GetDeckDto } from 'dto';
+import { deleteDeck, getDeck, updateDeck } from 'api';
 
 interface Props {
   deck: GetDeckDto;
@@ -34,6 +34,6 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const { data: deck } = await getDeck(params.id as string);
 
   return {
-    props: { deck }, // will be passed to the page component as props
+    props: { deck },
   };
 };

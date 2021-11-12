@@ -1,5 +1,5 @@
 import api from '../axios';
-import { CreateDeckDto, GetDeckDto } from '../../dto';
+import { CreateDeckDto, GetDeckDto } from 'dto';
 
 const getDecks = (): Promise<{ data: GetDeckDto[] }> => api.get('decks');
 const getDeck = (id: string): Promise<{ data: GetDeckDto }> => api.get(`decks/${id}`);

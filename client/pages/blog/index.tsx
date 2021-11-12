@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import Layout from '../../layout/Layout';
-import { getSortedPostsData } from '../../lib/posts';
+import Layout from 'layout';
+import { getSortedPostsData } from 'lib/posts';
 
 export default function Home({
   allPostsData,

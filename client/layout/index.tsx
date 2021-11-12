@@ -1,8 +1,7 @@
-import React, { useEffect, useLayoutEffect } from 'react';
-import Head from 'next/head';
-import Header from './Header';
-import Footer from './Footer';
-import Meta from './Meta';
+import React, { useEffect } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Meta from './components/Meta';
 
 const siteTitle = 'Next.js Sample Website';
 
