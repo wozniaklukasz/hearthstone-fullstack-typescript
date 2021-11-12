@@ -1,17 +1,50 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import Layout from 'layout';
 import { GetDeckDto } from 'dto';
-import { createDeck, deleteDeck, getDecks, updateDeck } from 'api/endpoints';
+import { useCreateDeck, useDeleteDeck, useGetDecks, useUpdateDeck, getDecks } from 'api';
 
 interface Props {
-  decks: GetDeckDto[];
+  initDecks: GetDeckDto[];
 }
 
-const Decks: React.FC<Props> = ({ decks }) => {
+const Decks: React.FC<Props> = ({ initDecks }) => {
+  const { refetch, data: fetchedDecks, isLoading: isGetDeckLoading } = useGetDecks();
+
+  const onMutationSuccess = useCallback(
+    async (data) => {
+      // todo: alert success
+      console.log('onSuccess', data);
+      await refetch();
+    },
+    [refetch],
+  );
+
+  const onMutationError = useCallback((error) => {
+    // todo: alert error
+    console.log('onError', error);
+  }, []);
+
+  const { mutate: createDeck, isLoading: isCreateDeckLoading } = useCreateDeck({
+    onSuccess: onMutationSuccess,
+    onError: onMutationError,
+  });
+  const { mutate: deleteDeck, isLoading: isDeleteDeckLoading } = useDeleteDeck({
+    onSuccess: onMutationSuccess,
+    onError: onMutationError,
+  });
+  const { mutate: updateDeck, isLoading: isUpdateDeckLoading } = useUpdateDeck({
+    onSuccess: onMutationSuccess,
+    onError: onMutationError,
+  });
+
+  const isLoading = isCreateDeckLoading || isGetDeckLoading || isDeleteDeckLoading || isUpdateDeckLoading;
+  const decks = (fetchedDecks && fetchedDecks.data) || initDecks;
+
   return (
     <Layout title="Decks">
+      {isLoading && 'LOADING!'}
       <button
         onClick={() =>
           createDeck({
@@ -63,9 +96,9 @@ const Decks: React.FC<Props> = ({ decks }) => {
 export default Decks;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data: decks } = await getDecks();
+  const { data: initDecks } = await getDecks();
 
   return {
-    props: { decks },
+    props: { initDecks },
   };
 };
