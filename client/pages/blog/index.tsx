@@ -1,7 +1,7 @@
-import Layout from '../../ui/Layout';
-import { getSortedPostsData } from '../../lib/posts';
-import Link from 'next/link';
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
+import Layout from '../../layout/Layout';
+import { getSortedPostsData } from '../../lib/posts';
 
 export default function Home({
   allPostsData,
@@ -14,15 +14,7 @@ export default function Home({
 }) {
   return (
     <Layout title="Blog">
-      <section>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section>
-        <h2>Blog</h2>
+      <div>
         <ul>
           {allPostsData.map(({ id, date, title }) => (
             <li key={id}>
@@ -34,7 +26,7 @@ export default function Home({
             </li>
           ))}
         </ul>
-      </section>
+      </div>
     </Layout>
   );
 }

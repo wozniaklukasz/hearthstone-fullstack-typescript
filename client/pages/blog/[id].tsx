@@ -1,7 +1,7 @@
-import Layout from '../../ui/Layout';
-import { getAllPostIds, getPostData } from '../../lib/posts';
-import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Head from 'next/head';
+import Layout from '../../layout/Layout';
+import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({
   postData,
