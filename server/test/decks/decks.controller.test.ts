@@ -4,8 +4,6 @@ import DecksControllerFactory from '../../src/modules/decks/decks.controller.fac
 import { deckDto } from './consts';
 import { DecksRoutesFactory } from '../../src/modules/decks/decks.routes.factory';
 import request from 'supertest';
-import { ICardsController, ICardsDao } from '../../src/modules/cards/interfaces';
-import CardsControllerFactory from '../../src/modules/cards/cards.controller.factory';
 import { errorCodes } from '../../src/const';
 
 // not 'pure' unit tests because of using routes

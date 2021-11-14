@@ -1,4 +1,4 @@
-import {NextFunction, Request, Response} from "express";
+import { NextFunction, Request, Response } from 'express';
 
 interface IDecksController {
   getDecks: (req: Request, res: Response, next: NextFunction) => void;
