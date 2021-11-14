@@ -31,3 +31,4 @@ Cards data comes from [HearthstoneJSON](https://hearthstonejson.com/).
 - [x] GitHub Actions
   - [x] Eslint & Prettier
   - [x] Unit tests
+  - [x] [CodeQL](https://codeql.github.com/) (JS & TS).
