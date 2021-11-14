@@ -1,7 +1,8 @@
 import { GetCardDto } from '../types';
+import { NextFunction, Request, Response } from 'express';
 
 interface ICardsController {
-  getCards: () => Promise<GetCardDto[]>;
+  getCards: (req: Request, res: Response, next: NextFunction) => void;
   getCardById: (deckId: string) => Promise<GetCardDto>;
 }
 
