@@ -1,5 +1,5 @@
-import { errorCodes } from '../../../src/const';
-import DaoValidation from '../../../src/modules/common/validators/DaoValidation';
+import { errorCodes } from '../../src/const';
+import DaoValidation from '../../src/modules/common/DaoValidation';
 
 describe('DaoValidation id validation', () => {
   it('throws error if id is incorrect', () => {

@@ -1,7 +1,7 @@
 import { ICardsDao } from './interfaces';
 import { CardDocument, ICardModel } from '../../model/card';
 import { DB_QUERY_LIMIT, errorCodes } from '../../const';
-import DaoValidation from '../common/validators/DaoValidation';
+import DaoValidation from '../common/DaoValidation';
 import { GetCardDto } from './types';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 

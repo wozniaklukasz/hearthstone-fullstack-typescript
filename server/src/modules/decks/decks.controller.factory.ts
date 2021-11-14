@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { CreateDeckDto, GetDeckDto } from './types';
 import { IDecksController, IDecksDao } from './interfaces';
-import ControllerService from '../common/validators/ControllerService';
+import ControllerService from '../common/ControllerService';
 
 class DecksControllerFactory implements IDecksController {
   private decksDao: IDecksDao;

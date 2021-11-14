@@ -1,4 +1,4 @@
-import { errorCodes } from '../../../const';
+import { errorCodes } from '../../const';
 
 abstract class DaoValidation {
   static validateId(id: string) {

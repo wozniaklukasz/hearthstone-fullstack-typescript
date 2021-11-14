@@ -4,7 +4,7 @@ import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 import { IDeckModel, DeckDocument } from '../../model';
 import { DB_QUERY_LIMIT, errorCodes } from '../../const';
-import DaoValidation from '../common/validators/DaoValidation';
+import DaoValidation from '../common/DaoValidation';
 
 class DecksDaoFactory implements IDecksDao {
   private deckModel: IDeckModel;
