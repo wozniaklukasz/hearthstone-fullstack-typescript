@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { ICardsController, ICardsDao } from './interfaces';
 import { GetCardDto } from './types';
-import ControllerValidation from '../common/validators/ControllerValidation';
+import ControllerService from '../common/validators/ControllerService';
 
 class CardsControllerFactory implements ICardsController {
   private cardsDao: ICardsDao;
@@ -21,7 +21,7 @@ class CardsControllerFactory implements ICardsController {
 
   async getCardById(req: Request, res: Response, next: NextFunction) {
     try {
-      ControllerValidation.requestContainsParamId(req);
+      ControllerService.getIdFromRequest(req);
       const card: GetCardDto = await this.cardsDao.getCardById(req.params.id);
       res.status(200).send(card);
     } catch (error) {
