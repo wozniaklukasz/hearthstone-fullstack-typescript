@@ -1,10 +1,12 @@
-import express from 'express';
+import { Application } from 'express';
 
-export abstract class CommonRoutes {
-  app: express.Application;
+export abstract class CommonRoutes<T> {
+  app: Application;
+  controller: T;
 
-  protected constructor(app: express.Application) {
+  protected constructor(app: Application, controller: T) {
     this.app = app;
+    this.controller = controller;
     this.configureRoutes();
   }
 
