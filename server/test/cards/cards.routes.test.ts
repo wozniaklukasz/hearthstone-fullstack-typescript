@@ -1,56 +1,42 @@
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import request from 'supertest';
 import { CardsRoutesFactory } from '../../src/modules/cards/cards.routes.factory';
 import { ICardsController } from '../../src/modules/cards/interfaces';
-import { errorHandler } from '../../src/helpers/errorHandler';
-import { cardDto } from './consts';
 
-describe('Cards routes works', () => {
+describe('Cards routes call appropriate controller methods', () => {
   let app: Application;
+  let cardsControllerMock: ICardsController;
 
   beforeAll(() => {
     app = express();
-    const cardsControllerMock: ICardsController = {
-      getCards: () => Promise.resolve([cardDto]),
-      getCardById: () => Promise.resolve(cardDto),
+
+    cardsControllerMock = {
+      getCards: (req: Request, res: Response) => res.end(),
+      getCardById: (req: Request, res: Response) => res.end(),
     };
 
     new CardsRoutesFactory(app, cardsControllerMock);
   });
 
-  it('GET /api/cards returns list of cards', (done) => {
-    request(app).get('/api/cards').expect(200).expect([cardDto], done);
+  it('GET /api/cards', (done) => {
+    const getCards = jest.spyOn(cardsControllerMock, 'getCards');
+
+    request(app)
+      .get('/api/cards')
+      .end(() => {
+        expect(getCards).toHaveBeenCalled();
+        done();
+      });
   });
 
-  it('GET /api/cards/:id returns a card', (done) => {
-    request(app).get('/api/cards/123').expect(200).expect(cardDto, done);
-  });
-});
+  it('GET /api/cards/:id', (done) => {
+    const getCardById = jest.spyOn(cardsControllerMock, 'getCardById');
 
-describe('Cards routes handle errors', () => {
-  let app: Application;
-  const expectedError = { error: 'error message' };
-
-  beforeAll(() => {
-    app = express();
-    const cardsControllerMock: ICardsController = {
-      getCards: () => {
-        throw new Error('error message');
-      },
-      getCardById: () => {
-        throw new Error('error message');
-      },
-    };
-
-    new CardsRoutesFactory(app, cardsControllerMock);
-    app.use(errorHandler);
-  });
-
-  it('GET /api/cards returns error message', (done) => {
-    request(app).get('/api/cards').expect(500).expect(expectedError, done);
-  });
-
-  it('GET /api/cards/:id returns error message', (done) => {
-    request(app).get('/api/cards/123').expect(500).expect(expectedError, done);
+    request(app)
+      .get('/api/cards/123')
+      .end(() => {
+        expect(getCardById).toHaveBeenCalled();
+        done();
+      });
   });
 });

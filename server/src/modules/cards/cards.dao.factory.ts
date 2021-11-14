@@ -1,7 +1,7 @@
 import { ICardsDao } from './interfaces';
 import { CardDocument, ICardModel } from '../../model/card';
 import { DB_QUERY_LIMIT, errorCodes } from '../../const';
-import DaoValidationService from '../common/daoValidationService';
+import DaoValidation from '../common/DaoValidation';
 import { GetCardDto } from './types';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 
@@ -18,7 +18,7 @@ class CardsDaoFactory implements ICardsDao {
   }
 
   async getCardById(id: string): Promise<GetCardDto> {
-    DaoValidationService.validateId(id);
+    DaoValidation.validateId(id);
 
     const card: CardDocument | null = await this.cardModel.findOne({ _id: id });
 

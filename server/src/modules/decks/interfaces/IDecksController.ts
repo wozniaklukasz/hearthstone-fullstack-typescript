@@ -1,11 +1,11 @@
-import { CreateDeckDto, GetDeckDto } from '../types';
+import { NextFunction, Request, Response } from 'express';
 
 interface IDecksController {
-  getDecks: () => Promise<GetDeckDto[]>;
-  getDeckById: (deckId: string) => Promise<GetDeckDto>;
-  createDeck: (deckDto: CreateDeckDto) => Promise<GetDeckDto>;
-  updateDeck: (deckId: string, deckDto: CreateDeckDto) => Promise<GetDeckDto>;
-  deleteDeck: (deckId: string) => Promise<string>;
+  getDecks: (req: Request, res: Response, next: NextFunction) => void;
+  getDeckById: (req: Request, res: Response, next: NextFunction) => void;
+  createDeck: (req: Request, res: Response, next: NextFunction) => void;
+  updateDeck: (req: Request, res: Response, next: NextFunction) => void;
+  deleteDeck: (req: Request, res: Response, next: NextFunction) => void;
 }
 
 export default IDecksController;

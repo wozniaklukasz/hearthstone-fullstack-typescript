@@ -1,5 +1,7 @@
+import { NextFunction, Request, Response } from 'express';
 import { CreateDeckDto, GetDeckDto } from './types';
 import { IDecksController, IDecksDao } from './interfaces';
+import ControllerService from '../common/ControllerService';
 
 class DecksControllerFactory implements IDecksController {
   private decksDao: IDecksDao;
@@ -8,24 +10,54 @@ class DecksControllerFactory implements IDecksController {
     this.decksDao = decksDao;
   }
 
-  async getDecks(): Promise<GetDeckDto[]> {
-    return this.decksDao.getDecks();
+  async getDecks(req: Request, res: Response, next: NextFunction) {
+    try {
+      const decks: GetDeckDto[] = await this.decksDao.getDecks();
+      res.status(200).send(decks);
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async getDeckById(deckId: string): Promise<GetDeckDto> {
-    return this.decksDao.getDeckById(deckId);
+  async getDeckById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = ControllerService.getIdFromRequest(req);
+      const deck: GetDeckDto = await this.decksDao.getDeckById(id);
+      res.status(200).send(deck);
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async createDeck(deckDto: CreateDeckDto): Promise<GetDeckDto> {
-    return this.decksDao.createDeck(deckDto);
+  async createDeck(req: Request, res: Response, next: NextFunction) {
+    try {
+      const deckDto: CreateDeckDto = { title: req.body.title };
+      const deck: GetDeckDto = await this.decksDao.createDeck(deckDto);
+      res.status(200).send(deck);
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async updateDeck(deckId: string, deckDto: CreateDeckDto): Promise<GetDeckDto> {
-    return this.decksDao.updateDeck(deckId, deckDto);
+  async updateDeck(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = ControllerService.getIdFromRequest(req);
+      const deckDto: CreateDeckDto = { title: req.body.title };
+      const deck: GetDeckDto = await this.decksDao.updateDeck(id, deckDto);
+      res.status(200).send(deck);
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async deleteDeck(deckId: string): Promise<string> {
-    return this.decksDao.deleteDeck(deckId);
+  async deleteDeck(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = ControllerService.getIdFromRequest(req);
+      await this.decksDao.deleteDeck(id);
+      res.status(200).send(id);
+    } catch (error) {
+      next(error);
+    }
   }
 }
 

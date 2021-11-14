@@ -10,58 +10,17 @@ export class DecksRoutesFactory extends CommonRoutes<IDecksController> {
   configureRoutes() {
     this.app
       .route(`/api/decks`)
-      .get((req: Request, res: Response, next: NextFunction) => {
-        this.controller
-          .getDecks()
-          .then((resp) => {
-            res.status(200).send(resp);
-          })
-          .catch((error) => {
-            next(error);
-          });
-      })
-      .post((req: Request, res: Response, next: NextFunction) => {
-        this.controller
-          .createDeck({ title: req.body.title })
-          .then((resp) => {
-            res.status(200).send(resp);
-          })
-          .catch((error) => {
-            next(error);
-          });
-      });
+      .get(async (req: Request, res: Response, next: NextFunction) => await this.controller.getDecks(req, res, next))
+      .post(
+        async (req: Request, res: Response, next: NextFunction) => await this.controller.createDeck(req, res, next),
+      );
 
     this.app
       .route(`/api/decks/:id`)
-      .get((req: Request, res: Response, next: NextFunction) => {
-        this.controller
-          .getDeckById(req.params.id)
-          .then((resp) => {
-            res.status(200).send(resp);
-          })
-          .catch((error) => {
-            next(error);
-          });
-      })
-      .put((req: Request, res: Response, next: NextFunction) => {
-        this.controller
-          .updateDeck(req.params.id, { title: req.body.title })
-          .then((resp) => {
-            res.status(200).send(resp);
-          })
-          .catch((error) => {
-            next(error);
-          });
-      })
-      .delete((req: Request, res: Response, next: NextFunction) => {
-        this.controller
-          .deleteDeck(req.params.id)
-          .then((resp) => {
-            res.status(200).send(resp);
-          })
-          .catch((error) => {
-            next(error);
-          });
-      });
+      .get(async (req: Request, res: Response, next: NextFunction) => await this.controller.getDeckById(req, res, next))
+      .put(async (req: Request, res: Response, next: NextFunction) => await this.controller.updateDeck(req, res, next))
+      .delete(
+        async (req: Request, res: Response, next: NextFunction) => await this.controller.deleteDeck(req, res, next),
+      );
   }
 }
