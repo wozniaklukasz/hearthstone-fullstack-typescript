@@ -12,15 +12,8 @@ export class CardsRoutesFactory extends CommonRoutes<ICardsController> {
       await this.controller.getCards(req, res, next);
     });
 
-    this.app.route(`/api/cards/:id`).get((req: Request, res: Response, next: NextFunction) => {
-      this.controller
-        .getCardById(req.params.id)
-        .then((resp) => {
-          res.status(200).send(resp);
-        })
-        .catch((error) => {
-          next(error);
-        });
+    this.app.route(`/api/cards/:id`).get(async (req: Request, res: Response, next: NextFunction) => {
+      await this.controller.getCardById(req, res, next);
     });
   }
 }
