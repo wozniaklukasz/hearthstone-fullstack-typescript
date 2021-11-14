@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { errorCodes } from '../../const';
+import { errorCodes } from '../../../const';
 
 abstract class ControllerValidation {
   static requestContainsParamId(req: Request) {

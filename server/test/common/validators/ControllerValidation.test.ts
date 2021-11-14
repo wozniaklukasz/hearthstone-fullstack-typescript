@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import { errorCodes } from '../../src/const';
-import ControllerValidation from '../../src/modules/common/ControllerValidation';
+import { errorCodes } from '../../../src/const';
+import ControllerValidation from '../../../src/modules/common/validators/ControllerValidation';
 
 describe('ControllerValidation', () => {
   it('throws error if id does not exist', () => {

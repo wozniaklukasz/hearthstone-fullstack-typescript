@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { ICardsController, ICardsDao } from './interfaces';
 import { GetCardDto } from './types';
-import ControllerValidation from '../common/ControllerValidation';
+import ControllerValidation from '../common/validators/ControllerValidation';
 
 class CardsControllerFactory implements ICardsController {
   private cardsDao: ICardsDao;

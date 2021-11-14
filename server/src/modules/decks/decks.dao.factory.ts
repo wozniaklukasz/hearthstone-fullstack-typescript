@@ -4,7 +4,7 @@ import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 import { IDeckModel, DeckDocument } from '../../model';
 import { DB_QUERY_LIMIT, errorCodes } from '../../const';
-import DaoValidationService from '../common/daoValidationService';
+import DaoValidation from '../common/validators/DaoValidation';
 
 class DecksDaoFactory implements IDecksDao {
   private deckModel: IDeckModel;
@@ -19,7 +19,7 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async getDeckById(deckId: string): Promise<GetDeckDto> {
-    DaoValidationService.validateId(deckId);
+    DaoValidation.validateId(deckId);
 
     const deck: DeckDocument | null = await this.deckModel.findOne({ _id: deckId });
 
@@ -36,7 +36,7 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async updateDeck(deckId: string, deckDto: CreateDeckDto): Promise<GetDeckDto> {
-    DaoValidationService.validateId(deckId);
+    DaoValidation.validateId(deckId);
 
     const updateResult: UpdateResult = await this.deckModel.updateOne({ _id: deckId }, deckDto);
 
@@ -48,7 +48,7 @@ class DecksDaoFactory implements IDecksDao {
   }
 
   async deleteDeck(deckId: string): Promise<string> {
-    DaoValidationService.validateId(deckId);
+    DaoValidation.validateId(deckId);
 
     const deleteResult: DeleteResult = await this.deckModel.deleteOne({ _id: deckId });
 

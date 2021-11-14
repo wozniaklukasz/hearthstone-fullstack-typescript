@@ -63,7 +63,7 @@ describe('Card Controller handle errors (call next function)', () => {
 
 describe('Card Controller throw errors', () => {
   it('getCardById throw error if no id', async () => {
-    const expectedError = errorCodes.INVALID_ID;
+    const expectedError = new Error(errorCodes.INVALID_ID);
 
     const req = {} as Request;
     const res = {} as Response;
