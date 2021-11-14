@@ -5,6 +5,7 @@ import { ICardsController, ICardsDao } from '../../src/modules/cards/interfaces'
 import CardsControllerFactory from '../../src/modules/cards/cards.controller.factory';
 import { cardDto } from './consts';
 import { CardsRoutesFactory } from '../../src/modules/cards/cards.routes.factory';
+import { errorCodes } from '../../src/const';
 
 // not 'pure' unit tests because of using routes
 describe('Card Controller return appropriate responses', () => {
@@ -57,5 +58,21 @@ describe('Card Controller handle errors (call next function)', () => {
     await cardsController.getCardById(req, res, next);
 
     expect(next).toBeCalledWith('getCardById error');
+  });
+});
+
+describe('Card Controller throw errors', () => {
+  it('getCardById throw error if no id', async () => {
+    const expectedError = errorCodes.INVALID_ID;
+
+    const req = {} as Request;
+    const res = {} as Response;
+    const next = jest.fn();
+
+    const cardsController = new CardsControllerFactory({} as ICardsDao);
+
+    await cardsController.getCardById(req, res, next);
+
+    expect(next).toBeCalledWith(expectedError);
   });
 });

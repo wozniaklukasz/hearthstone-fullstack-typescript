@@ -1,6 +1,7 @@
-import { ICardsController, ICardsDao } from './interfaces';
 import { NextFunction, Request, Response } from 'express';
+import { ICardsController, ICardsDao } from './interfaces';
 import { GetCardDto } from './types';
+import ControllerValidation from '../common/ControllerValidation';
 
 class CardsControllerFactory implements ICardsController {
   private cardsDao: ICardsDao;
@@ -20,7 +21,7 @@ class CardsControllerFactory implements ICardsController {
 
   async getCardById(req: Request, res: Response, next: NextFunction) {
     try {
-      // todo: check if id exists before controller call
+      ControllerValidation.requestContainsParamId(req);
       const card: GetCardDto = await this.cardsDao.getCardById(req.params.id);
       res.status(200).send(card);
     } catch (error) {
