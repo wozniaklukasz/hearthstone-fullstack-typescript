@@ -5,7 +5,10 @@ import * as path from 'path';
 import { connection } from 'mongoose';
 import initDbConnection, { disconnect } from '../index';
 import { CreateCardDto } from '../../modules/cards/types';
+import { CardDocument } from '../../model/card';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapJsonCardToCardDto = (jsonCards: any[]): CreateCardDto[] =>
   jsonCards.map((jCard) => ({
     imageId: jCard.id,
@@ -40,7 +43,7 @@ const initAdmin = async () => {
 const initCards = async () => {
   console.log('Load cards...');
 
-  let cards: any[] = [];
+  let cards: CardDocument[] = [];
   const dataDir = path.resolve(__dirname, './data/');
 
   fs.readdirSync(dataDir).forEach((dir) => {
