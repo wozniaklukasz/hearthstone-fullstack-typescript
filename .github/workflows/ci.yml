@@ -45,6 +45,10 @@ jobs:
         run: npm run lint
       - name: Unit testing
         run: npm test
+      - name: Publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: 9bf899868ba09bdad0ce66ed10d7d720f736e3441edf8ad359504e1f692ab3ca
 # job from GitHub - https://codeql.github.com/docs/
   analyze:
     name: Analyze with CodeQL
