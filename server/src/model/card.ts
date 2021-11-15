@@ -1,24 +1,8 @@
 import { Schema, model, Model, Document } from 'mongoose';
 import { ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType } from '../modules/cards/enums';
+import { CreateCardDto } from '../modules/cards/types';
 
-type CardDocument = Partial<Document> & {
-  imageId: string;
-  name: string;
-  text: string;
-  flavor: string;
-  artist: string;
-  attack: number;
-  cardClass: ECardClass | null;
-  collectible: boolean;
-  cost: number;
-  elite: boolean;
-  faction: ECardFaction | null;
-  health: number;
-  mechanics: ECardMechanics[] | null;
-  rarity: ECardRarity | null;
-  cardSet: ECardSet | null;
-  type: ECardType | null;
-};
+type CardDocument = Partial<Document> & CreateCardDto;
 
 interface ICardModel extends Model<CardDocument> {}
 
@@ -49,7 +33,7 @@ const schema = new Schema<CardDocument>({
   health: Number,
   mechanics: {
     type: [String],
-    enum: Object.values(ECardClass),
+    enum: Object.values(ECardMechanics),
   },
   rarity: {
     type: String,
