@@ -14,7 +14,7 @@ type CardDocument = Partial<Document> & {
   elite: boolean;
   faction: any;
   health: number;
-  mechanics: any[];
+  mechanics: any[] | null;
   rarity: any;
   cardSet: any;
   type: any;

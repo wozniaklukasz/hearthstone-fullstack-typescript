@@ -17,9 +17,9 @@
 - [x] Mongoose
 - [ ] Schema validation with Yup
 
-### Database
+## Database
 
-Initialize:
+To initialize run from `server` directory (configured `.env` file reqired):
 ```
  npm run migration
 ```
@@ -28,6 +28,7 @@ Cards data comes from [HearthstoneJSON](https://hearthstonejson.com/).
 
 ## CI/CD
 
+- [ ] Docker Compose
 - [x] GitHub Actions
   - [x] Eslint & Prettier
   - [x] Unit tests

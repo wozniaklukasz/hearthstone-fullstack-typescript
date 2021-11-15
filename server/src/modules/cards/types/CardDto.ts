@@ -1,4 +1,4 @@
-// todo: change any to enums
+import { ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType } from '../enums';
 
 type CardDto = {
   imageId: string;
@@ -7,16 +7,16 @@ type CardDto = {
   flavor: string;
   artist: string;
   attack: number;
-  cardClass: any;
+  cardClass: ECardClass | null;
   collectible: boolean;
   cost: number;
   elite: boolean;
-  faction: any;
+  faction: ECardFaction | null;
   health: number;
-  mechanics: any[];
-  rarity: any;
-  cardSet: any;
-  type: any;
+  mechanics: ECardMechanics[] | null;
+  rarity: ECardRarity | null;
+  cardSet: ECardSet | null;
+  type: ECardType | null;
 };
 
 export type CreateCardDto = CardDto & Record<string, unknown>;

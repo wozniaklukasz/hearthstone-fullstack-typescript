@@ -1,1 +1,1 @@
-export { CreateCardDto, GetCardDto } from './Card.dto';
+export { CreateCardDto, GetCardDto } from './CardDto';
