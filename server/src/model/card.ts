@@ -1,6 +1,6 @@
 import { Schema, model, Model, Document } from 'mongoose';
+import { ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType } from '../modules/cards/enums';
 
-// todo: replace any with enums
 type CardDocument = Partial<Document> & {
   imageId: string;
   name: string;
@@ -8,21 +8,20 @@ type CardDocument = Partial<Document> & {
   flavor: string;
   artist: string;
   attack: number;
-  cardClass: any;
+  cardClass: ECardClass | null;
   collectible: boolean;
   cost: number;
   elite: boolean;
-  faction: any;
+  faction: ECardFaction | null;
   health: number;
-  mechanics: any[] | null;
-  rarity: any;
-  cardSet: any;
-  type: any;
+  mechanics: ECardMechanics[] | null;
+  rarity: ECardRarity | null;
+  cardSet: ECardSet | null;
+  type: ECardType | null;
 };
 
 interface ICardModel extends Model<CardDocument> {}
 
-// todo: replace Mixed with enums
 const schema = new Schema<CardDocument>({
   imageId: {
     type: String,
@@ -36,16 +35,34 @@ const schema = new Schema<CardDocument>({
   flavor: String,
   artist: String,
   attack: Number,
-  cardClass: Schema.Types.Mixed,
+  cardClass: {
+    type: String,
+    enum: ECardClass,
+  },
   collectible: Boolean,
   cost: Number,
   elite: Boolean,
-  faction: Schema.Types.Mixed,
+  faction: {
+    type: String,
+    enum: ECardFaction,
+  },
   health: Number,
-  mechanics: Schema.Types.Mixed,
-  rarity: Schema.Types.Mixed,
-  set: Schema.Types.Mixed,
-  type: Schema.Types.Mixed,
+  mechanics: {
+    type: [String],
+    enum: Object.values(ECardClass),
+  },
+  rarity: {
+    type: String,
+    enum: ECardRarity,
+  },
+  set: {
+    type: String,
+    enum: ECardSet,
+  },
+  type: {
+    type: String,
+    enum: ECardType,
+  },
 });
 
 const CardModel: ICardModel = model('Card', schema);
