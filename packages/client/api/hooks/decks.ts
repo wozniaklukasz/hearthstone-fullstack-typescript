@@ -1,5 +1,5 @@
 import { UseMutationResult, useMutation, UseQueryResult, useQuery, UseQueryOptions } from 'react-query';
-import { CreateDeckDto, GetDeckDto } from 'dto';
+import { CreateDeckDto, GetDeckDto } from 'commons/lib/dtos';
 import { Error } from '../types';
 import { createDeck, deleteDeck, getDeck, getDecks, updateDeck } from '../endpoints';
 

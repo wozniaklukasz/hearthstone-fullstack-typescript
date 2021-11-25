@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetDeckDto } from 'commons/lib/dtos';
 import Layout from 'layout';
-import { GetDeckDto } from 'dto';
 import { deleteDeck, getDeck, updateDeck } from 'api';
 
 interface Props {

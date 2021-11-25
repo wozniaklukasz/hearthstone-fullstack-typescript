@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Layout from 'layout';
-import { GetCardDto } from 'dto';
+import { GetCardDto } from 'commons/lib/dtos';
 import { getCard, getCards } from 'api/endpoints/cards';
 
 interface Props {

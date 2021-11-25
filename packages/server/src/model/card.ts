@@ -1,6 +1,6 @@
 import { Schema, model, Model, Document } from 'mongoose';
-import { ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType } from '../modules/cards/enums';
-import { CreateCardDto } from '../modules/cards/types';
+import { CreateCardDto } from 'commons/lib/dtos';
+import { ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType } from 'commons/lib/enums';
 
 type CardDocument = Partial<Document> & CreateCardDto;
 

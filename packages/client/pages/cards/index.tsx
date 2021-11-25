@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
+import { GetCardDto } from 'commons/lib/dtos';
 import Layout from 'layout';
 import { getCards } from 'api';
-import { GetCardDto } from 'dto';
 
 interface Props {
   cards: GetCardDto[];

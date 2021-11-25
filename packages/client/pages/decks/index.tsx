@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import Layout from 'layout';
-import { GetDeckDto } from 'dto';
+import { GetDeckDto } from 'commons/lib/dtos';
 import { useCreateDeck, useDeleteDeck, useGetDecks, useUpdateDeck, getDecks } from 'api';
 
 interface Props {
