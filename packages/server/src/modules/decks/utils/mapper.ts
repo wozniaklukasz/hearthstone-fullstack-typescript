@@ -1,4 +1,4 @@
-import { GetDeckDto } from '../types';
+import { GetDeckDto } from 'commons/lib/dtos';
 import { DeckDocument } from '../../../model';
 
 const mapDaoToDto = (dao: DeckDocument): GetDeckDto => {

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { CreateDeckDto, GetDeckDto } from './types';
+import { CreateDeckDto, GetDeckDto } from 'commons/lib/dtos';
 import { IDecksController, IDecksDao } from './interfaces';
 import ControllerService from '../common/ControllerService';
 

@@ -1,5 +1,5 @@
 import { DeleteResult, UpdateResult } from 'mongodb';
-import { CreateDeckDto, GetDeckDto } from './types';
+import { CreateDeckDto, GetDeckDto } from 'commons/lib/dtos';
 import { IDecksDao } from './interfaces';
 import { mapDaoListToDtoList, mapDaoToDto } from './utils';
 import { IDeckModel, DeckDocument } from '../../model';

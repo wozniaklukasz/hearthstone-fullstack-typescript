@@ -1,4 +1,4 @@
-import { GetDeckDto } from '../../src/modules/decks/types';
+import { GetDeckDto } from 'commons/lib/dtos';
 import { DeckDocument } from '../../src/model';
 
 const deckDto: GetDeckDto = {
