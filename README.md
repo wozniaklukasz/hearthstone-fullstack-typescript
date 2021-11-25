@@ -60,3 +60,6 @@ Examples:
 
 Run `npm run dev` from `client` and `server` package:
 `npx lerna run dev --parallel --scope='{client,server}'`
+
+Install `commons` as dependency (after adding `"commons": "0.0.1",` in `package.json` dependencies):
+`npx lerna bootstrap`
