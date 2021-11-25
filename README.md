@@ -22,6 +22,11 @@
 MERN TypeScript full stack project.
 Cards data comes from [HearthstoneJSON](https://hearthstonejson.com/).
 
+Setup:
+1. `npm i`
+2. Run `npm run bootstrap` to prepare project.
+3. Run `npm run dev` to run development.
+
 ## Client
 
 - [x] React
@@ -56,7 +61,7 @@ To initialize run from `server` directory (configured `.env` file reqired):
 
 ## Lerna
 
-Examples:
+Bootstrap project:
 
 Run `npm run dev` from `client` and `server` package:
 `npx lerna run dev --parallel --scope='{client,server}'`
