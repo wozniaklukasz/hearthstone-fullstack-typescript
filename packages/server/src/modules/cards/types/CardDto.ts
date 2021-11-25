@@ -1,4 +1,4 @@
-import { ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType } from '../enums';
+import {ECardClass, ECardFaction, ECardMechanics, ECardRarity, ECardSet, ECardType} from "commons/lib/enums";
 
 type CardDto = {
   imageId: string;
