@@ -53,3 +53,10 @@ To initialize run from `server` directory (configured `.env` file reqired):
   - [x] Unit tests
   - [x] [CodeQL](https://codeql.github.com/) (JS & TS).
   - [x] [Code Climate](https://codeclimate.com/github/wozniaklukasz/hearthstone-fullstack-typescript).
+
+## Lerna
+
+Examples:
+
+Run `npm run dev` from `client` and `server` package:
+`npx lerna run dev --parallel --scope='{client,server}'`
