@@ -1,4 +1,4 @@
-import { GetCardDto } from '../../src/modules/cards/types';
+import { GetCardDto } from 'commons/lib/dtos';
 import { CardDocument } from '../../src/model/card';
 
 const cardDto: GetCardDto = {

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
+import { GetCardDto } from 'commons/lib/dtos';
 import { ICardsController, ICardsDao } from './interfaces';
-import { GetCardDto } from './types';
 import ControllerService from '../common/ControllerService';
 
 class CardsControllerFactory implements ICardsController {

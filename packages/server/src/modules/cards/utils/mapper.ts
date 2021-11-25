@@ -1,5 +1,5 @@
+import { GetCardDto } from 'commons/lib/dtos';
 import { CardDocument } from '../../../model/card';
-import { GetCardDto } from '../types';
 
 const mapDaoToDto = (dao: CardDocument): GetCardDto => {
   return {

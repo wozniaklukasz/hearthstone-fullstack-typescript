@@ -47,7 +47,7 @@ Setup:
 
 To initialize run from `server` directory (configured `.env` file reqired):
 ```
- npm run migration
+ npm run server:migration
 ```
 
 ## CI/CD

@@ -2,9 +2,9 @@
   "name": "client",
   "version": "0.0.1",
   "scripts": {
-    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev -p 3001",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --c \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\"",
     "lint-fix": "eslint --fix \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\" && prettier --write \"{lib,pages,ui,components,modules}/**/*.{ts,tsx}\""
   },

@@ -1,4 +1,4 @@
-import { GetCardDto } from '../types';
+import { GetCardDto } from 'commons/lib/dtos';
 
 interface ICardsDao {
   getCards: () => Promise<GetCardDto[]>;

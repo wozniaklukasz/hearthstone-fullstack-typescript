@@ -3,8 +3,8 @@ dotenv.config();
 import * as fs from 'fs';
 import * as path from 'path';
 import { connection } from 'mongoose';
+import { CreateCardDto } from 'commons/lib/dtos';
 import initDbConnection, { disconnect } from '../index';
-import { CreateCardDto } from '../../modules/cards/types';
 import { CardDocument } from '../../model/card';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
