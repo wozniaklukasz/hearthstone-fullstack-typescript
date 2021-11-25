@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "bootstrap": "lerna run build --scope=commons && lerna bootstrap",
+    "dev": "lerna run dev --parallel --scope='{client,server}'",
+    "test": "lerna run test --scope='{client,server}'",
+    "lint": "lerna run lint --scope='{client,server}'",
+    "lint-fix": "lerna run lint-fix --scope='{client,server}'"
+  }
+}

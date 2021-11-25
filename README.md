@@ -22,6 +22,11 @@
 MERN TypeScript full stack project.
 Cards data comes from [HearthstoneJSON](https://hearthstonejson.com/).
 
+Setup:
+1. `npm i`
+2. Run `npm run bootstrap` to prepare project.
+3. Run `npm run dev` to run development.
+
 ## Client
 
 - [x] React
@@ -42,7 +47,7 @@ Cards data comes from [HearthstoneJSON](https://hearthstonejson.com/).
 
 To initialize run from `server` directory (configured `.env` file reqired):
 ```
- npm run migration
+ npm run server:migration
 ```
 
 ## CI/CD
@@ -53,3 +58,13 @@ To initialize run from `server` directory (configured `.env` file reqired):
   - [x] Unit tests
   - [x] [CodeQL](https://codeql.github.com/) (JS & TS).
   - [x] [Code Climate](https://codeclimate.com/github/wozniaklukasz/hearthstone-fullstack-typescript).
+
+## Lerna
+
+Bootstrap project:
+
+Run `npm run dev` from `client` and `server` package:
+`npx lerna run dev --parallel --scope='{client,server}'`
+
+Install `commons` as dependency (after adding `"commons": "0.0.1",` in `package.json` dependencies):
+`npx lerna bootstrap`
