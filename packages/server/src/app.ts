@@ -4,7 +4,7 @@ dotenv.config();
 import express from 'express';
 import * as http from 'http';
 
-import { corsMiddleware } from './middleware';
+import { corsMiddleware, sessionMiddleware } from './middleware';
 import initDbConnection from './db';
 import { logger, errorLogger } from './helpers/logger';
 import initRoutes from './routes';
@@ -19,6 +19,7 @@ initDbConnection();
 // middleware
 app.use(express.json());
 app.use(logger);
+sessionMiddleware(app);
 app.use(corsMiddleware());
 
 // routes

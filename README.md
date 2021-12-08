@@ -68,3 +68,8 @@ Run `npm run dev` from `client` and `server` package:
 
 Install `commons` as dependency (after adding `"commons": "0.0.1",` in `package.json` dependencies):
 `npx lerna bootstrap`
+
+Install dependency (server dev dependency example)
+
+`lerna add @types/express-session --dev --scope=server
+`
