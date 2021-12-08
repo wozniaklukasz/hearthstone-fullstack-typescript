@@ -20,7 +20,7 @@ initDbConnection();
 app.use(express.json());
 app.use(logger);
 sessionMiddleware(app);
-app.use(corsMiddleware());
+corsMiddleware(app);
 
 // routes
 initRoutes(app);

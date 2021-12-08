@@ -1,3 +1,4 @@
+import { Application } from 'express';
 import cors from 'cors';
 
 const corsOptions = {
@@ -5,4 +6,6 @@ const corsOptions = {
   credentials: true,
 };
 
-export default () => cors(corsOptions);
+export default (app: Application) => {
+  app.use(cors(corsOptions));
+};
