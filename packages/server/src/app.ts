@@ -3,8 +3,8 @@ dotenv.config();
 
 import express from 'express';
 import * as http from 'http';
-import cors from 'cors';
 
+import { corsMiddleware } from './middleware';
 import initDbConnection from './db';
 import { logger, errorLogger } from './helpers/logger';
 import initRoutes from './routes';
@@ -16,10 +16,12 @@ const port = 3000;
 
 initDbConnection();
 
+// middleware
 app.use(express.json());
-app.use(cors());
 app.use(logger);
+app.use(corsMiddleware());
 
+// routes
 initRoutes(app);
 
 // error handling
