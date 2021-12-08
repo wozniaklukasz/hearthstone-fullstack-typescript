@@ -12,7 +12,12 @@ class UsersControllerFactory implements IUsersController {
 
   async register(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('register');
+      const { email, password } = req.params;
+      const user: GetUserDto = await this.usersDao.createUser({
+        email,
+        password,
+      });
+      res.status(200).send(user);
     } catch (error) {
       next(error);
     }
@@ -20,7 +25,9 @@ class UsersControllerFactory implements IUsersController {
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('login');
+      const { email, password } = req.params;
+      const user: GetUserDto = await this.usersDao.getUserByCredentials(email, password);
+      res.status(200).send(user);
     } catch (error) {
       next(error);
     }
